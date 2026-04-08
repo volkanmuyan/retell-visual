@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retell Visual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ─── HEADER ─────────────────────────────────────────────── -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+
+      <a href="/" class="logo" aria-label="Retell Visual Ana Sayfa">
+        <img src="assets/logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-wordmark">retell <strong>visual</strong></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Ana menü">
+        <ul class="nav-list">
+          <li><a href="#saha"       class="nav-link" data-section="saha">Saha</a></li>
+          <li><a href="#cografya"   class="nav-link" data-section="cografya">Coğrafya</a></li>
+          <li><a href="#kultur"     class="nav-link" data-section="kultur">Kültür</a></li>
+          <li><a href="#multimedya" class="nav-link" data-section="multimedya">Multimedya</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button id="lang-toggle" class="icon-btn" aria-label="Dil değiştir">
+          <span class="lang-label">TR</span>
+        </button>
+        <button id="theme-toggle" class="icon-btn" aria-label="Tema değiştir">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button id="menu-toggle" class="icon-btn hamburger" aria-label="Mobil menü" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+    <!-- Mobile nav -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <ul>
+        <li><a href="#saha"       class="mobile-link">Saha</a></li>
+        <li><a href="#cografya"   class="mobile-link">Coğrafya</a></li>
+        <li><a href="#kultur"     class="mobile-link">Kültür</a></li>
+        <li><a href="#multimedya" class="mobile-link">Multimedya</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ─── HERO SLIDER ───────────────────────────────────────── -->
+    <section class="hero" aria-label="Öne çıkan haberler">
+      <div class="hero-track" id="hero-track">
+
+        <article class="hero-slide" data-index="0">
+          <div class="hero-bg" style="background-image: linear-gradient(135deg,#1a0505 0%,#3d0c0c 40%,#1a0505 100%);">
+            <div class="hero-photo" style="background: linear-gradient(to right, rgba(15,5,5,0) 40%, rgba(15,5,5,0.7) 100%), url('https://picsum.photos/seed/kurdish/1400/800') center/cover no-repeat;"></div>
+          </div>
+          <div class="hero-overlay"></div>
+          <div class="container hero-content">
+            <span class="label label-red" data-tr="Araştırma" data-en="Research">Araştırma</span>
+            <h1 class="hero-title" data-tr="Kürt Siyasetinde<br>Kırılma Anı" data-en="A Breaking Point in<br>Kurdish Politics">Kürt Siyasetinde<br>Kırılma Anı</h1>
+            <p class="hero-sub" data-tr="PKK'nın ateşkes ilanıyla başlayan yeni süreçte tarafların beklentileri, riskleri ve müzakerenin iç yüzü." data-en="Expectations, risks and the inner workings of the negotiation in the new process that began with the PKK's ceasefire declaration.">PKK'nın ateşkes ilanıyla başlayan yeni süreçte tarafların beklentileri, riskleri ve müzakerenin iç yüzü.</p>
+            <div class="hero-meta">
+              <span class="hero-author" data-tr="Delal Aydın" data-en="Delal Aydın">Delal Aydın</span>
+              <span class="hero-date">8 Nisan 2026</span>
+            </div>
+            <a href="#" class="btn-primary" data-tr="Devamını Oku" data-en="Read More">Devamını Oku</a>
+          </div>
+        </article>
+
+        <article class="hero-slide" data-index="1">
+          <div class="hero-bg" style="background: #050d1a;">
+            <div class="hero-photo" style="background: linear-gradient(to right, rgba(5,13,26,0) 40%, rgba(5,13,26,0.7) 100%), url('https://picsum.photos/seed/migration/1400/800') center/cover no-repeat;"></div>
+          </div>
+          <div class="hero-overlay"></div>
+          <div class="container hero-content">
+            <span class="label label-blue" data-tr="Göç" data-en="Migration">Göç</span>
+            <h1 class="hero-title" data-tr="Göç Yollarının<br>Sonu Nereye Çıkar?" data-en="Where Do the<br>Migration Routes Lead?">Göç Yollarının<br>Sonu Nereye Çıkar?</h1>
+            <p class="hero-sub" data-tr="Suriye'den yüzyıl önce göç eden Kürtlerin torununun Türkiye üzerinden yeniden göç etmek zorunda kalmasının hikâyesi." data-en="The story of the grandchild of Kurds who migrated from Syria a century ago, forced to migrate again through Turkey.">Suriye'den yüzyıl önce göç eden Kürtlerin torununun Türkiye üzerinden yeniden göç etmek zorunda kalmasının hikâyesi.</p>
+            <div class="hero-meta">
+              <span class="hero-author">Berivan Doğan</span>
+              <span class="hero-date">5 Nisan 2026</span>
+            </div>
+            <a href="#" class="btn-primary" data-tr="Devamını Oku" data-en="Read More">Devamını Oku</a>
+          </div>
+        </article>
+
+        <article class="hero-slide" data-index="2">
+          <div class="hero-bg" style="background: #0d0a00;">
+            <div class="hero-photo" style="background: linear-gradient(to right, rgba(13,10,0,0) 40%, rgba(13,10,0,0.7) 100%), url('https://picsum.photos/seed/middleeast/1400/800') center/cover no-repeat;"></div>
+          </div>
+          <div class="hero-overlay"></div>
+          <div class="container hero-content">
+            <span class="label label-amber" data-tr="Odak" data-en="Focus">Odak</span>
+            <h1 class="hero-title" data-tr="Ortadoğu'da<br>Değişen Dengeler" data-en="Shifting Balances<br>in the Middle East">Ortadoğu'da<br>Değişen Dengeler</h1>
+            <p class="hero-sub" data-tr="Suriye'nin yeniden yapılanma sürecinde Kürt aktörlerinin konumu ve bölgesel güçlerin yeni çıkar haritası." data-en="The position of Kurdish actors in Syria's reconstruction process and the new map of interests of regional powers.">Suriye'nin yeniden yapılanma sürecinde Kürt aktörlerinin konumu ve bölgesel güçlerin yeni çıkar haritası.</p>
+            <div class="hero-meta">
+              <span class="hero-author">Serhat Bozkurt</span>
+              <span class="hero-date">3 Nisan 2026</span>
+            </div>
+            <a href="#" class="btn-primary" data-tr="Devamını Oku" data-en="Read More">Devamını Oku</a>
+          </div>
+        </article>
+
+        <article class="hero-slide" data-index="3">
+          <div class="hero-bg" style="background: #050a14;">
+            <div class="hero-photo" style="background: linear-gradient(to right, rgba(5,10,20,0) 40%, rgba(5,10,20,0.7) 100%), url('https://picsum.photos/seed/memory/1400/800') center/cover no-repeat;"></div>
+          </div>
+          <div class="hero-overlay"></div>
+          <div class="container hero-content">
+            <span class="label label-teal" data-tr="Hafıza" data-en="Memory">Hafıza</span>
+            <h1 class="hero-title" data-tr="Hafızanın<br>Silinmezliği Üzerine" data-en="On the<br>Indelibility of Memory">Hafızanın<br>Silinmezliği Üzerine</h1>
+            <p class="hero-sub" data-tr="Sur'un yıkılan mahallelerinden bugüne — sakinlerin aktardıkları ve devletin görmek istemediği." data-en="From the demolished neighborhoods of Sur to today — what residents relay and what the state does not want to see.">Sur'un yıkılan mahallelerinden bugüne — sakinlerin aktardıkları ve devletin görmek istemediği.</p>
+            <div class="hero-meta">
+              <span class="hero-author">Zeynep Aslan</span>
+              <span class="hero-date">1 Nisan 2026</span>
+            </div>
+            <a href="#" class="btn-primary" data-tr="Devamını Oku" data-en="Read More">Devamını Oku</a>
+          </div>
+        </article>
+
+        <article class="hero-slide" data-index="4">
+          <div class="hero-bg" style="background: #0a0514;">
+            <div class="hero-photo" style="background: linear-gradient(to right, rgba(10,5,20,0) 40%, rgba(10,5,20,0.7) 100%), url('https://picsum.photos/seed/cinema/1400/800') center/cover no-repeat;"></div>
+          </div>
+          <div class="hero-overlay"></div>
+          <div class="container hero-content">
+            <span class="label label-purple" data-tr="Sinema" data-en="Cinema">Sinema</span>
+            <h1 class="hero-title" data-tr="Sürgünde Sinemayı<br>Yeniden Kurmak" data-en="Rebuilding Cinema<br>in Exile">Sürgünde Sinemayı<br>Yeniden Kurmak</h1>
+            <p class="hero-sub" data-tr="Yılmaz Güney'den bugüne, Kürt sinemacıların varlık mücadelesi ve yeni kuşağın sesini kendi diline taşıma çabası." data-en="From Yılmaz Güney to today, Kurdish filmmakers' struggle for existence and the new generation's effort to carry its voice into its own language.">Yılmaz Güney'den bugüne, Kürt sinemacıların varlık mücadelesi ve yeni kuşağın sesini kendi diline taşıma çabası.</p>
+            <div class="hero-meta">
+              <span class="hero-author">Narin Yıldız</span>
+              <span class="hero-date">28 Mart 2026</span>
+            </div>
+            <a href="#" class="btn-primary" data-tr="Devamını Oku" data-en="Read More">Devamını Oku</a>
+          </div>
+        </article>
+
+      </div><!-- /hero-track -->
+
+      <button class="hero-arrow hero-prev" id="hero-prev" aria-label="Önceki">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="hero-arrow hero-next" id="hero-next" aria-label="Sonraki">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <div class="hero-bottom">
+        <div class="hero-dots" id="hero-dots" role="tablist" aria-label="Slayt navigasyonu">
+          <button class="dot active" role="tab" aria-selected="true"  aria-label="Slayt 1"></button>
+          <button class="dot"        role="tab" aria-selected="false" aria-label="Slayt 2"></button>
+          <button class="dot"        role="tab" aria-selected="false" aria-label="Slayt 3"></button>
+          <button class="dot"        role="tab" aria-selected="false" aria-label="Slayt 4"></button>
+          <button class="dot"        role="tab" aria-selected="false" aria-label="Slayt 5"></button>
+        </div>
+        <div class="hero-progress-bar" id="hero-progress-bar"></div>
+      </div>
+
+    </section><!-- /hero -->
+
+    <!-- ─── FEATURED ──────────────────────────────────────────── -->
+    <section class="section-featured" aria-label="Öne çıkan yazılar">
+      <div class="container">
+        <div class="featured-grid" data-animate>
+
+          <article class="card-featured-main">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/featured1/800/500" alt="Müzakere Masasının Gölgesinde" loading="lazy">
+              <span class="card-tag" data-tr="Dosya" data-en="Files">Dosya</span>
+            </a>
+            <div class="card-body">
+              <h2 class="card-title"><a href="#" data-tr="Müzakere Masasının Gölgesinde: Barış Sürecinin İç Yüzü" data-en="In the Shadow of the Negotiating Table: Inside the Peace Process">Müzakere Masasının Gölgesinde: Barış Sürecinin İç Yüzü</a></h2>
+              <p class="card-excerpt" data-tr="On yıllık aradan sonra yeniden başlayan müzakerelerde neler değişti, neler aynı kaldı? Sahadan kapsamlı bir değerlendirme." data-en="What changed and what stayed the same in negotiations that resumed after a decade? A comprehensive assessment from the field.">On yıllık aradan sonra yeniden başlayan müzakerelerde neler değişti, neler aynı kaldı? Sahadan kapsamlı bir değerlendirme.</p>
+              <div class="card-footer">
+                <span class="card-author">Cihan Uzunçarşılı Baysal</span>
+                <time class="card-date">7 Nisan 2026</time>
+              </div>
+            </div>
+          </article>
+
+          <div class="featured-secondary">
+            <article class="card-sm" data-animate data-delay="1">
+              <a href="#" class="card-img-wrap">
+                <img src="https://picsum.photos/seed/featured2/400/260" alt="" loading="lazy">
+                <span class="card-tag" data-tr="Araştırma" data-en="Research">Araştırma</span>
+              </a>
+              <div class="card-body">
+                <h3 class="card-title"><a href="#" data-tr="Kobani'nin On Yılı: Kuşatmadan Özerkliğe" data-en="Kobani's Decade: From Siege to Autonomy">Kobani'nin On Yılı: Kuşatmadan Özerkliğe</a></h3>
+                <div class="card-footer">
+                  <span class="card-author">Ruken Çelik</span>
+                  <time class="card-date">4 Nisan 2026</time>
+                </div>
+              </div>
+            </article>
+            <article class="card-sm" data-animate data-delay="2">
+              <a href="#" class="card-img-wrap">
+                <img src="https://picsum.photos/seed/featured3/400/260" alt="" loading="lazy">
+                <span class="card-tag" data-tr="Portre" data-en="Portrait">Portre</span>
+              </a>
+              <div class="card-body">
+                <h3 class="card-title"><a href="#" data-tr="Leyla Güven: Açlık Grevinden Siyasi Sahneye" data-en="Leyla Güven: From Hunger Strike to Political Stage">Leyla Güven: Açlık Grevinden Siyasi Sahneye</a></h3>
+                <div class="card-footer">
+                  <span class="card-author">Hêvî Çeto</span>
+                  <time class="card-date">2 Nisan 2026</time>
+                </div>
+              </div>
+            </article>
+            <article class="card-sm" data-animate data-delay="3">
+              <a href="#" class="card-img-wrap">
+                <img src="https://picsum.photos/seed/featured4/400/260" alt="" loading="lazy">
+                <span class="card-tag" data-tr="Şehir" data-en="City">Şehir</span>
+              </a>
+              <div class="card-body">
+                <h3 class="card-title"><a href="#" data-tr="Amed'in Çehresini Değiştiren On Yıl" data-en="The Decade That Changed Amed's Face">Amed'in Çehresini Değiştiren On Yıl</a></h3>
+                <div class="card-footer">
+                  <span class="card-author">Nidal Baydaş</span>
+                  <time class="card-date">30 Mart 2026</time>
+                </div>
+              </div>
+            </article>
+          </div>
+
+        </div><!-- /featured-grid -->
+      </div>
+    </section>
+
+    <!-- ─── SAHA ───────────────────────────────────────────────── -->
+    <section class="section-category" id="saha" aria-labelledby="saha-heading">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <div class="section-title-group">
+            <span class="section-eyebrow">01</span>
+            <h2 class="section-heading" id="saha-heading" data-tr="Saha" data-en="Field">Saha</h2>
+          </div>
+          <div class="tab-group" role="tablist">
+            <button class="tab active" role="tab" data-filter="all"   data-tr="Tümü"      data-en="All">Tümü</button>
+            <button class="tab"        role="tab" data-filter="arastirma" data-tr="Araştırma" data-en="Research">Araştırma</button>
+            <button class="tab"        role="tab" data-filter="dosya" data-tr="Dosya"     data-en="Files">Dosya</button>
+            <button class="tab"        role="tab" data-filter="odak"  data-tr="Odak"      data-en="Focus">Odak</button>
+          </div>
+          <a href="#" class="view-all" data-tr="Tümünü Gör →" data-en="View All →">Tümünü Gör →</a>
+        </div>
+
+        <div class="card-row" id="saha-row">
+          <article class="card-article" data-category="arastirma" data-animate data-delay="1">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/saha1/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Araştırma" data-en="Research">Araştırma</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="PKK Ateşkesinin Anatomisi: Kim Ne İstiyor?" data-en="Anatomy of the PKK Ceasefire: Who Wants What?">PKK Ateşkesinin Anatomisi: Kim Ne İstiyor?</a></h3>
+              <p class="card-excerpt" data-tr="Yeni barış sürecinde masaya yansıyan taleplerin kapsamlı analizi." data-en="A comprehensive analysis of the demands reflected at the table in the new peace process.">Yeni barış sürecinde masaya yansıyan taleplerin kapsamlı analizi.</p>
+              <div class="card-footer"><span class="card-author">Mahmut Bozarslan</span><time>6 Nisan 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-category="dosya" data-animate data-delay="2">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/saha2/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Dosya" data-en="Files">Dosya</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Siyasi Tutukluluğun Belgeleri: 2015-2025" data-en="Documents of Political Imprisonment: 2015-2025">Siyasi Tutukluluğun Belgeleri: 2015-2025</a></h3>
+              <p class="card-excerpt" data-tr="On yıllık yargılama süreçlerinin rakamlarla dökümü ve insan hikâyeleri." data-en="A breakdown in numbers of ten years of judicial processes and human stories.">On yıllık yargılama süreçlerinin rakamlarla dökümü ve insan hikâyeleri.</p>
+              <div class="card-footer"><span class="card-author">Felat Bozarslan</span><time>3 Nisan 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-category="odak" data-animate data-delay="3">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/saha3/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Odak" data-en="Focus">Odak</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Çatışma Sonrası Kentte Yeniden Yapılanma" data-en="Reconstruction in the Post-Conflict City">Çatışma Sonrası Kentte Yeniden Yapılanma</a></h3>
+              <p class="card-excerpt" data-tr="Operasyonlar sonrası Sur, Nusaybin ve Cizre'de bugünkü tablo." data-en="Today's picture in Sur, Nusaybin and Cizre after operations.">Operasyonlar sonrası Sur, Nusaybin ve Cizre'de bugünkü tablo.</p>
+              <div class="card-footer"><span class="card-author">Yalçın Büyük</span><time>31 Mart 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-category="arastirma" data-animate data-delay="4">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/saha4/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Araştırma" data-en="Research">Araştırma</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Silah Bırakmanın Bedeli: Tarihsel Karşılaştırma" data-en="The Cost of Disarmament: A Historical Comparison">Silah Bırakmanın Bedeli: Tarihsel Karşılaştırma</a></h3>
+              <p class="card-excerpt" data-tr="IRA'dan FARC'a dünyadan örnekler ve Türkiye'ye yansımaları." data-en="Examples from IRA to FARC and their reflections on Turkey.">IRA'dan FARC'a dünyadan örnekler ve Türkiye'ye yansımaları.</p>
+              <div class="card-footer"><span class="card-author">Güneş Murat Tezcür</span><time>28 Mart 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-category="dosya" data-animate data-delay="5">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/saha5/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Dosya" data-en="Files">Dosya</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Barış Müzakerelerinde Yeni Aktörler" data-en="New Actors in Peace Negotiations">Barış Müzakerelerinde Yeni Aktörler</a></h3>
+              <p class="card-excerpt" data-tr="Sivil toplumun, Kürt diasporasının ve uluslararası gözlemcilerin rolü." data-en="The role of civil society, the Kurdish diaspora and international observers.">Sivil toplumun, Kürt diasporasının ve uluslararası gözlemcilerin rolü.</p>
+              <div class="card-footer"><span class="card-author">Ayşe Günaysu</span><time>25 Mart 2026</time></div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── COĞRAFYA ───────────────────────────────────────────── -->
+    <section class="section-category section-alt" id="cografya" aria-labelledby="cografya-heading">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <div class="section-title-group">
+            <span class="section-eyebrow">02</span>
+            <h2 class="section-heading" id="cografya-heading" data-tr="Coğrafya" data-en="Geography">Coğrafya</h2>
+          </div>
+          <div class="tab-group" role="tablist">
+            <button class="tab active" role="tab" data-filter="all"   data-tr="Tümü"   data-en="All">Tümü</button>
+            <button class="tab"        role="tab" data-filter="hafiza" data-tr="Hafıza" data-en="Memory">Hafıza</button>
+            <button class="tab"        role="tab" data-filter="goc"   data-tr="Göç"    data-en="Migration">Göç</button>
+            <button class="tab"        role="tab" data-filter="portre" data-tr="Portre" data-en="Portrait">Portre</button>
+            <button class="tab"        role="tab" data-filter="sehir" data-tr="Şehir"  data-en="City">Şehir</button>
+          </div>
+          <a href="#" class="view-all" data-tr="Tümünü Gör →" data-en="View All →">Tümünü Gör →</a>
+        </div>
+
+        <div class="card-row" id="cografya-row">
+          <article class="card-article" data-category="hafiza" data-animate data-delay="1">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/cog1/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Hafıza" data-en="Memory">Hafıza</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Diyarbakır Suriçi'nin Silinmeye Yüz Tutan Anıları" data-en="The Fading Memories of Diyarbakır's Sur">Diyarbakır Suriçi'nin Silinmeye Yüz Tutan Anıları</a></h3>
+              <p class="card-excerpt" data-tr="Yıkım öncesi mahalle sakinlerinin tanıklıkları ve ardında bıraktıkları." data-en="Testimonies of neighborhood residents before demolition and what they left behind.">Yıkım öncesi mahalle sakinlerinin tanıklıkları ve ardında bıraktıkları.</p>
+              <div class="card-footer"><span class="card-author">Zeynep Aslan</span><time>5 Nisan 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-category="goc" data-animate data-delay="2">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/cog2/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Göç" data-en="Migration">Göç</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Suriyeli Mülteciler: 13. Yıl, Yeni Belirsizlikler" data-en="Syrian Refugees: 13th Year, New Uncertainties">Suriyeli Mülteciler: 13. Yıl, Yeni Belirsizlikler</a></h3>
+              <p class="card-excerpt" data-tr="Dönüş tartışmaları, kamp koşulları ve Türkiye'nin değişen tutumu." data-en="Return debates, camp conditions and Turkey's changing stance.">Dönüş tartışmaları, kamp koşulları ve Türkiye'nin değişen tutumu.</p>
+              <div class="card-footer"><span class="card-author">Berivan Doğan</span><time>2 Nisan 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-category="portre" data-animate data-delay="3">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/cog3/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Portre" data-en="Portrait">Portre</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Abdullah Öcalan: Bir Sürecin Sembolü mü, Aktörü mü?" data-en="Abdullah Öcalan: Symbol or Actor of a Process?">Abdullah Öcalan: Bir Sürecin Sembolü mü, Aktörü mü?</a></h3>
+              <p class="card-excerpt" data-tr="Yirmi beş yıllık tecrit sonrası gündeme gelen siyasi rolünün kapsamı." data-en="The scope of the political role that emerged after twenty-five years of isolation.">Yirmi beş yıllık tecrit sonrası gündeme gelen siyasi rolünün kapsamı.</p>
+              <div class="card-footer"><span class="card-author">Hêvî Çeto</span><time>29 Mart 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-category="sehir" data-animate data-delay="4">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/cog4/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Şehir" data-en="City">Şehir</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Mardin: Çok Katmanlı Bir Şehrin Portresi" data-en="Mardin: Portrait of a Multilayered City">Mardin: Çok Katmanlı Bir Şehrin Portresi</a></h3>
+              <p class="card-excerpt" data-tr="Süryani, Kürt, Arap ve Türk kültürlerin yüzyıllık iç içeliğinin coğrafi anlatısı." data-en="The geographic narrative of centuries of intertwining Syriac, Kurdish, Arab and Turkish cultures.">Süryani, Kürt, Arap ve Türk kültürlerin yüzyıllık iç içeliğinin coğrafi anlatısı.</p>
+              <div class="card-footer"><span class="card-author">Seyfo Erhan</span><time>26 Mart 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-category="hafiza" data-animate data-delay="5">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/cog5/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Hafıza" data-en="Memory">Hafıza</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Halabja'yı Unutmamak: Kolektif Travmanın Siyaseti" data-en="Not Forgetting Halabja: The Politics of Collective Trauma">Halabja'yı Unutmamak: Kolektif Travmanın Siyaseti</a></h3>
+              <p class="card-excerpt" data-tr="Kimyasal saldırının 38. yıldönümünde tanıklık, anma ve siyaset." data-en="Testimony, commemoration and politics on the 38th anniversary of the chemical attack.">Kimyasal saldırının 38. yıldönümünde tanıklık, anma ve siyaset.</p>
+              <div class="card-footer"><span class="card-author">Alan Semo</span><time>16 Mart 2026</time></div>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ─── PORTRE SPOTLIGHT ──────────────────────────────────── -->
+    <section class="section-spotlight" aria-label="Portre">
+      <div class="container">
+        <div class="spotlight-inner" data-animate>
+          <div class="spotlight-text">
+            <span class="label label-red" data-tr="Portre" data-en="Portrait">Portre</span>
+            <h2 data-tr="Demirtaş'ın Cezaevindeki Yılları" data-en="Demirtaş's Years Behind Bars">Demirtaş'ın Cezaevindeki Yılları</h2>
+            <p data-tr="Selahattin Demirtaş 2016'dan bu yana tutuklu. Avrupa İnsan Hakları Mahkemesi'nin kararlarına, uluslararası baskılara rağmen serbest bırakılmayan bir siyasetçinin hikâyesi — ve bu uzun tutukluluk döneminin Kürt siyaseti üzerindeki gölgesi." data-en="Selahattin Demirtaş has been in pre-trial detention since 2016. The story of a politician who has not been released despite European Court of Human Rights rulings and international pressure — and the shadow this long detention period casts over Kurdish politics.">Selahattin Demirtaş 2016'dan bu yana tutuklu. Avrupa İnsan Hakları Mahkemesi'nin kararlarına, uluslararası baskılara rağmen serbest bırakılmayan bir siyasetçinin hikâyesi — ve bu uzun tutukluluk döneminin Kürt siyaseti üzerindeki gölgesi.</p>
+            <a href="#" class="btn-outline" data-tr="Yazının Tamamını Oku" data-en="Read the Full Article">Yazının Tamamını Oku</a>
+          </div>
+          <div class="spotlight-img">
+            <img src="https://picsum.photos/seed/demirtas/600/700" alt="Portre" loading="lazy">
+            <div class="spotlight-quote">
+              <blockquote data-tr="&ldquo;Barış bir ihtiyaç değil, insanlık onurunun zorunluluğudur.&rdquo;" data-en="&ldquo;Peace is not a need, but an imperative of human dignity.&rdquo;">&ldquo;Barış bir ihtiyaç değil, insanlık onurunun zorunluluğudur.&rdquo;</blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── KÜLTÜR ─────────────────────────────────────────────── -->
+    <section class="section-category" id="kultur" aria-labelledby="kultur-heading">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <div class="section-title-group">
+            <span class="section-eyebrow">03</span>
+            <h2 class="section-heading" id="kultur-heading" data-tr="Kültür" data-en="Culture">Kültür</h2>
+          </div>
+          <div class="tab-group" role="tablist">
+            <button class="tab active" role="tab" data-filter="all"    data-tr="Tümü"   data-en="All">Tümü</button>
+            <button class="tab"        role="tab" data-filter="sinema" data-tr="Sinema" data-en="Cinema">Sinema</button>
+            <button class="tab"        role="tab" data-filter="kitap"  data-tr="Kitap"  data-en="Books">Kitap</button>
+            <button class="tab"        role="tab" data-filter="muzik"  data-tr="Müzik"  data-en="Music">Müzik</button>
+          </div>
+          <a href="#" class="view-all" data-tr="Tümünü Gör →" data-en="View All →">Tümünü Gör →</a>
+        </div>
+
+        <div class="card-row">
+          <article class="card-article" data-animate data-delay="1">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/kul1/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Sinema" data-en="Cinema">Sinema</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Yılmaz Güney Sonrası Kürt Sineması" data-en="Kurdish Cinema After Yılmaz Güney">Yılmaz Güney Sonrası Kürt Sineması</a></h3>
+              <p class="card-excerpt" data-tr="Onun mirasını taşıyan, onunla hesaplaşan ya da ondan bağımsız bir yol çizen yönetmenlere bakış." data-en="A look at directors who carry his legacy, reckon with it, or chart an independent path.">Onun mirasını taşıyan, onunla hesaplaşan ya da ondan bağımsız bir yol çizen yönetmenlere bakış.</p>
+              <div class="card-footer"><span class="card-author">Narin Yıldız</span><time>4 Nisan 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-animate data-delay="2">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/kul2/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Kitap" data-en="Books">Kitap</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Kürtçe Edebiyatın Yeni Sesleri" data-en="New Voices in Kurdish Literature">Kürtçe Edebiyatın Yeni Sesleri</a></h3>
+              <p class="card-excerpt" data-tr="Son on yılda Kurmanci ve Zazaca kaleme alınan eserlerin kısa ama güçlü tablosu." data-en="A brief but powerful picture of works written in Kurmanji and Zazaki over the last decade.">Son on yılda Kurmanci ve Zazaca kaleme alınan eserlerin kısa ama güçlü tablosu.</p>
+              <div class="card-footer"><span class="card-author">Arjîn Ararat</span><time>1 Nisan 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-animate data-delay="3">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/kul3/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Müzik" data-en="Music">Müzik</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Dağ Türkülerinden Hip-Hop'a: Kürt Müziğinin Dönüşümü" data-en="From Mountain Ballads to Hip-Hop: The Transformation of Kurdish Music">Dağ Türkülerinden Hip-Hop'a: Kürt Müziğinin Dönüşümü</a></h3>
+              <p class="card-excerpt" data-tr="Dengbêjlik geleneği ile diasporanın kentli genç nesli arasında kalan müzikal miras." data-en="The musical heritage caught between the dengbêj tradition and the urban young generation of the diaspora.">Dengbêjlik geleneği ile diasporanın kentli genç nesli arasında kalan müzikal miras.</p>
+              <div class="card-footer"><span class="card-author">Xêzan Dağ</span><time>28 Mart 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article" data-animate data-delay="4">
+            <a href="#" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/kul4/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Sinema" data-en="Cinema">Sinema</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="'Bakur' Belgeseli Neden Hâlâ Yasaklı?" data-en="Why Is the Documentary 'Bakur' Still Banned?">&#39;Bakur&#39; Belgeseli Neden Hâlâ Yasaklı?</a></h3>
+              <p class="card-excerpt" data-tr="Özgür Doğan ve Mehmet Tunç imzalı belgeselin sekiz yıllık yasak öyküsü." data-en="The eight-year ban story of the documentary signed by Özgür Doğan and Mehmet Tunç.">Özgür Doğan ve Mehmet Tunç imzalı belgeselin sekiz yıllık yasak öyküsü.</p>
+              <div class="card-footer"><span class="card-author">Narin Yıldız</span><time>24 Mart 2026</time></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── MULTİMEDYA ───────────────────────────────────────── -->
+    <section class="section-multimedia section-alt" id="multimedya" aria-labelledby="mm-heading">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <div class="section-title-group">
+            <span class="section-eyebrow">04</span>
+            <h2 class="section-heading" id="mm-heading" data-tr="Multimedya" data-en="Multimedia">Multimedya</h2>
+          </div>
+          <a href="#" class="view-all" data-tr="Tümünü Gör →" data-en="View All →">Tümünü Gör →</a>
+        </div>
+
+        <div class="multimedia-grid" data-animate>
+
+          <article class="mm-card mm-video">
+            <a href="#" class="mm-img-wrap">
+              <img src="https://picsum.photos/seed/mm1/700/420" alt="" loading="lazy">
+              <div class="mm-play">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <span class="mm-type-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span data-tr="Video" data-en="Video">Video</span>
+              </span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Barış Masası | Belgesel: Müzakere İçeriden" data-en="Peace Table | Documentary: Negotiations from the Inside">Barış Masası | Belgesel: Müzakere İçeriden</a></h3>
+              <p class="card-excerpt" data-tr="45 dk · Delal Aydın yapımı" data-en="45 min · Production by Delal Aydın">45 dk · Delal Aydın yapımı</p>
+            </div>
+          </article>
+
+          <article class="mm-card mm-podcast">
+            <a href="#" class="mm-img-wrap">
+              <img src="https://picsum.photos/seed/mm2/700/420" alt="" loading="lazy">
+              <div class="mm-play">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+              </div>
+              <span class="mm-type-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/></svg>
+                <span data-tr="Podcast" data-en="Podcast">Podcast</span>
+              </span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Göçün Sesi: Hikayelerin Peşinde | B.3 E.12" data-en="Voice of Migration: In Pursuit of Stories | S.3 E.12">Göçün Sesi: Hikayelerin Peşinde | B.3 E.12</a></h3>
+              <p class="card-excerpt" data-tr="58 dk · Yeni bölüm" data-en="58 min · New episode">58 dk · Yeni bölüm</p>
+            </div>
+          </article>
+
+          <article class="mm-card mm-photo">
+            <a href="#" class="mm-img-wrap">
+              <img src="https://picsum.photos/seed/mm3/700/420" alt="" loading="lazy">
+              <span class="mm-type-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span data-tr="Fotoğraf" data-en="Photo Story">Fotoğraf</span>
+              </span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="#" data-tr="Sur'dan Kalma: Yıkım Öncesi ve Sonrası" data-en="Remnants of Sur: Before and After Demolition">Sur'dan Kalma: Yıkım Öncesi ve Sonrası</a></h3>
+              <p class="card-excerpt" data-tr="24 fotoğraf · Ahmet Reha Taşkesen" data-en="24 photos · Ahmet Reha Taşkesen">24 fotoğraf · Ahmet Reha Taşkesen</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── BÜLTEN ────────────────────────────────────────────── -->
+    <section class="section-newsletter" aria-label="Bülten aboneliği">
+      <div class="container">
+        <div class="newsletter-inner" data-animate>
+          <div class="newsletter-text">
+            <span class="label label-red" data-tr="Haftalık Bülten" data-en="Weekly Newsletter">Haftalık Bülten</span>
+            <h2 data-tr="Haftanın önerileri posta kutunuzda" data-en="This week's picks in your inbox">Haftanın önerileri posta kutunuzda</h2>
+            <p data-tr="Her Cuma, editörlerimizin seçtiği yazılar, kısa bir bağlam ve haftalık okuma listesi." data-en="Every Friday, articles selected by our editors, brief context and a weekly reading list.">Her Cuma, editörlerimizin seçtiği yazılar, kısa bir bağlam ve haftalık okuma listesi.</p>
+          </div>
+          <form class="newsletter-form" novalidate>
+            <div class="form-row">
+              <input type="email" id="nl-email" class="nl-input" placeholder="E-posta adresiniz" aria-label="E-posta adresiniz" required>
+              <button type="submit" class="btn-primary nl-btn" data-tr="Abone Ol" data-en="Subscribe">Abone Ol</button>
+            </div>
+            <p class="form-note" data-tr="Spam yok. İstediğiniz zaman aboneliği iptal edebilirsiniz." data-en="No spam. You can unsubscribe at any time.">Spam yok. İstediğiniz zaman aboneliği iptal edebilirsiniz.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ─── FOOTER ────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="/" class="logo">
+            <span class="logo-wordmark">retell <strong>visual</strong></span>
+          </a>
+          <p class="footer-tagline" data-tr="Toplumsal hikâyeler, araştırma ve yeni medya anlatıları — Türkçe ve İngilizce." data-en="Social stories, research and new media narratives — in Turkish and English.">Toplumsal hikâyeler, araştırma ve yeni medya anlatıları — Türkçe ve İngilizce.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="X / Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="#" class="social-link" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer menü">
+          <div class="footer-col">
+            <h4 data-tr="Saha" data-en="Field">Saha</h4>
+            <ul>
+              <li><a href="#" data-tr="Araştırma" data-en="Research">Araştırma</a></li>
+              <li><a href="#" data-tr="Dosya" data-en="Files">Dosya</a></li>
+              <li><a href="#" data-tr="Odak" data-en="Focus">Odak</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-tr="Coğrafya" data-en="Geography">Coğrafya</h4>
+            <ul>
+              <li><a href="#" data-tr="Hafıza" data-en="Memory">Hafıza</a></li>
+              <li><a href="#" data-tr="Göç" data-en="Migration">Göç</a></li>
+              <li><a href="#" data-tr="Portre" data-en="Portrait">Portre</a></li>
+              <li><a href="#" data-tr="Şehir" data-en="City">Şehir</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-tr="Kültür" data-en="Culture">Kültür</h4>
+            <ul>
+              <li><a href="#" data-tr="Sinema" data-en="Cinema">Sinema</a></li>
+              <li><a href="#" data-tr="Kitap" data-en="Books">Kitap</a></li>
+              <li><a href="#" data-tr="Müzik" data-en="Music">Müzik</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4 data-tr="Multimedya" data-en="Multimedia">Multimedya</h4>
+            <ul>
+              <li><a href="#" data-tr="Video" data-en="Video">Video</a></li>
+              <li><a href="#" data-tr="Podcast" data-en="Podcast">Podcast</a></li>
+              <li><a href="#" data-tr="Fotoğraf" data-en="Photo Stories">Fotoğraf</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright" data-tr="© 2026 Retell Visual. Tüm hakları saklıdır." data-en="© 2026 Retell Visual. All rights reserved.">© 2026 Retell Visual. Tüm hakları saklıdır.</p>
+        <div class="footer-links">
+          <a href="#" data-tr="Hakkımızda" data-en="About">Hakkımızda</a>
+          <a href="#" data-tr="Çalışma Kuralları" data-en="Editorial Guidelines">Çalışma Kuralları</a>
+          <a href="#" data-tr="İletişim" data-en="Contact">İletişim</a>
+          <a href="#" data-tr="Gizlilik" data-en="Privacy">Gizlilik</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

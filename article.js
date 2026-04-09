@@ -74,10 +74,10 @@
     fontLevels.forEach(function (cls) { if (cls) articleBody.classList.remove(cls); });
     if (fontLevels[fontIndex]) articleBody.classList.add(fontLevels[fontIndex]);
 
-    /* visual state */
-    if (decBtn)   { decBtn.disabled  = fontIndex === 0;                    decBtn.style.opacity  = fontIndex === 0 ? '0.35' : ''; }
-    if (incBtn)   { incBtn.disabled  = fontIndex === fontLevels.length - 1; incBtn.style.opacity  = fontIndex === fontLevels.length - 1 ? '0.35' : ''; }
-    if (resetBtn) { resetBtn.classList.toggle('active', fontIndex !== 1); }
+    /* visual state — no disabled, always clickable */
+    if (decBtn)   decBtn.style.opacity  = fontIndex === 0 ? '0.4' : '1';
+    if (incBtn)   incBtn.style.opacity  = fontIndex === fontLevels.length - 1 ? '0.4' : '1';
+    if (resetBtn) resetBtn.classList.toggle('active', fontIndex !== 1);
   }
 
   applyFontSize(1);

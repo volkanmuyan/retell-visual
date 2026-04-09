@@ -62,24 +62,25 @@
   }
 
   /* ── FONT SIZE CONTROLS ───────────────────────────────────── */
-  var fontLevels  = ['font-sm', '', 'font-lg', 'font-xl'];
-  var fontIndex   = parseInt(localStorage.getItem('retell-font-idx') || '1', 10);
-  var decBtn      = document.getElementById('font-decrease');
-  var resetBtn    = document.getElementById('font-reset');
-  var incBtn      = document.getElementById('font-increase');
+  var fontLevels = ['font-sm', '', 'font-lg', 'font-xl'];
+  var fontIndex  = 1; /* always start at default, no localStorage */
+  var decBtn     = document.getElementById('font-decrease');
+  var resetBtn   = document.getElementById('font-reset');
+  var incBtn     = document.getElementById('font-increase');
 
   function applyFontSize(idx) {
     fontIndex = Math.min(Math.max(0, idx), fontLevels.length - 1);
-    localStorage.setItem('retell-font-idx', fontIndex);
     if (!articleBody) return;
     fontLevels.forEach(function (cls) { if (cls) articleBody.classList.remove(cls); });
     if (fontLevels[fontIndex]) articleBody.classList.add(fontLevels[fontIndex]);
-    if (decBtn)   decBtn.disabled   = fontIndex === 0;
-    if (incBtn)   incBtn.disabled   = fontIndex === fontLevels.length - 1;
-    if (resetBtn) resetBtn.classList.toggle('active', fontIndex !== 1);
+
+    /* visual state */
+    if (decBtn)   { decBtn.disabled  = fontIndex === 0;                    decBtn.style.opacity  = fontIndex === 0 ? '0.35' : ''; }
+    if (incBtn)   { incBtn.disabled  = fontIndex === fontLevels.length - 1; incBtn.style.opacity  = fontIndex === fontLevels.length - 1 ? '0.35' : ''; }
+    if (resetBtn) { resetBtn.classList.toggle('active', fontIndex !== 1); }
   }
 
-  applyFontSize(fontIndex);
+  applyFontSize(1);
   if (decBtn)   decBtn.addEventListener('click',  function () { applyFontSize(fontIndex - 1); });
   if (resetBtn) resetBtn.addEventListener('click', function () { applyFontSize(1); });
   if (incBtn)   incBtn.addEventListener('click',  function () { applyFontSize(fontIndex + 1); });

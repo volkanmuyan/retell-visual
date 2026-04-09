@@ -54,6 +54,9 @@
     if (nlInput) {
       nlInput.placeholder = lang === 'tr' ? 'E-posta adresiniz' : 'Your email address';
     }
+
+    /* Notify article.js of language change */
+    document.dispatchEvent(new CustomEvent('retell:langchange', { detail: { lang: lang } }));
   }
 
   applyLang(currentLang);

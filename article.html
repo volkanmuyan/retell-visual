@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Müzakere Masasının Gölgesinde — Retell Visual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="article.css">
+</head>
+<body>
+
+  <!-- ── READING PROGRESS ─────────────────────────────────── -->
+  <div class="reading-progress" id="reading-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Okuma ilerlemesi"></div>
+
+  <!-- ── HEADER ───────────────────────────────────────────── -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Retell Visual Ana Sayfa">
+        <img src="assets/logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
+        <span class="logo-wordmark">retell <strong>visual</strong></span>
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Ana menü">
+        <ul class="nav-list">
+          <li><a href="index.html#saha"       class="nav-link">Saha</a></li>
+          <li><a href="index.html#cografya"   class="nav-link">Coğrafya</a></li>
+          <li><a href="index.html#kultur"     class="nav-link">Kültür</a></li>
+          <li><a href="index.html#multimedya" class="nav-link">Multimedya</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button id="lang-toggle" class="icon-btn" aria-label="Dil değiştir"><span class="lang-label">TR</span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="Tema değiştir">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button id="menu-toggle" class="icon-btn hamburger" aria-label="Mobil menü" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <ul>
+        <li><a href="index.html#saha"       class="mobile-link">Saha</a></li>
+        <li><a href="index.html#cografya"   class="mobile-link">Coğrafya</a></li>
+        <li><a href="index.html#kultur"     class="mobile-link">Kültür</a></li>
+        <li><a href="index.html#multimedya" class="mobile-link">Multimedya</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ── ARTICLE HERO ──────────────────────────────────────── -->
+    <section class="article-hero">
+      <div class="article-hero-img">
+        <img src="https://picsum.photos/seed/article-hero/1400/700" alt="Müzakere masası" loading="eager">
+        <div class="article-hero-overlay"></div>
+      </div>
+      <div class="container article-hero-content">
+        <div class="article-breadcrumb">
+          <a href="index.html">Ana Sayfa</a>
+          <span>/</span>
+          <a href="index.html#saha">Saha</a>
+          <span>/</span>
+          <span data-tr="Dosya" data-en="Files">Dosya</span>
+        </div>
+        <div class="article-tags">
+          <a href="#" class="tag tag-red" data-tr="Dosya" data-en="Files">Dosya</a>
+          <a href="#" class="tag" data-tr="Barış Süreci" data-en="Peace Process">Barış Süreci</a>
+          <a href="#" class="tag" data-tr="Kürt Siyaseti" data-en="Kurdish Politics">Kürt Siyaseti</a>
+        </div>
+        <h1 class="article-title" data-tr="Müzakere Masasının Gölgesinde: Barış Sürecinin İç Yüzü" data-en="In the Shadow of the Negotiating Table: Inside the Peace Process">Müzakere Masasının Gölgesinde: Barış Sürecinin İç Yüzü</h1>
+        <p class="article-subtitle" data-tr="On yıllık aradan sonra yeniden başlayan müzakerelerde neler değişti, neler aynı kaldı? Sahadan kapsamlı bir değerlendirme." data-en="What changed and what stayed the same in negotiations that resumed after a decade? A comprehensive field assessment.">On yıllık aradan sonra yeniden başlayan müzakerelerde neler değişti, neler aynı kaldı? Sahadan kapsamlı bir değerlendirme.</p>
+
+        <div class="article-meta-bar">
+          <div class="article-author-block">
+            <img src="https://picsum.photos/seed/author1/80/80" alt="Cihan Uzunçarşılı Baysal" class="author-avatar">
+            <div>
+              <a href="#" class="author-name">Cihan Uzunçarşılı Baysal</a>
+              <span class="author-role" data-tr="Araştırmacı Gazeteci" data-en="Investigative Journalist">Araştırmacı Gazeteci</span>
+            </div>
+          </div>
+          <div class="article-meta-right">
+            <span class="meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <time data-tr="7 Nisan 2026" data-en="April 7, 2026">7 Nisan 2026</time>
+            </span>
+            <span class="meta-item meta-reading" id="reading-time-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span id="reading-time-text" data-tr="12 dk okuma" data-en="12 min read">12 dk okuma</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ARTICLE TOOLBAR ───────────────────────────────────── -->
+    <div class="article-toolbar" id="article-toolbar">
+      <div class="container article-toolbar-inner">
+
+        <div class="toolbar-left">
+          <!-- Font size accessibility -->
+          <div class="a11y-group" role="group" aria-label="Yazı boyutu">
+            <button class="a11y-btn" id="font-decrease" aria-label="Yazıyı küçült">A−</button>
+            <button class="a11y-btn" id="font-reset"    aria-label="Yazı boyutunu sıfırla">A</button>
+            <button class="a11y-btn" id="font-increase" aria-label="Yazıyı büyüt">A+</button>
+          </div>
+          <!-- Reading mode -->
+          <button class="a11y-btn" id="focus-mode" aria-label="Odak modu" title="Odak modu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          </button>
+        </div>
+
+        <div class="toolbar-center">
+          <span class="reading-status" id="reading-status" data-tr="Okumaya başlayın" data-en="Start reading">Okumaya başlayın</span>
+        </div>
+
+        <div class="toolbar-right">
+          <button class="share-btn" id="share-copy" aria-label="Bağlantıyı kopyala">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span data-tr="Kopyala" data-en="Copy link">Kopyala</span>
+          </button>
+          <a href="https://twitter.com/intent/tweet" class="share-btn" target="_blank" rel="noopener" aria-label="X'te paylaş">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <span>X</span>
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/" class="share-btn" target="_blank" rel="noopener" aria-label="LinkedIn'de paylaş">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── ARTICLE BODY ───────────────────────────────────────── -->
+    <div class="article-layout" id="article-body">
+      <div class="container">
+        <div class="article-grid">
+
+          <!-- Sticky sidebar (TOC) -->
+          <aside class="article-sidebar" id="article-sidebar" aria-label="İçindekiler">
+            <div class="toc-wrap">
+              <p class="toc-heading" data-tr="İçindekiler" data-en="Contents">İçindekiler</p>
+              <nav>
+                <ol class="toc-list" id="toc-list">
+                  <li><a href="#section-1" class="toc-link" data-tr="Yeni Süreç Nasıl Başladı?" data-en="How Did the New Process Begin?">Yeni Süreç Nasıl Başladı?</a></li>
+                  <li><a href="#section-2" class="toc-link" data-tr="Masadakiler ve Beklentiler" data-en="The Parties and Their Expectations">Masadakiler ve Beklentiler</a></li>
+                  <li><a href="#section-3" class="toc-link" data-tr="Görsel Karusel: Sürecin Kronolojisi" data-en="Visual Carousel: Process Timeline">Görsel Karusel: Sürecin Kronolojisi</a></li>
+                  <li><a href="#section-4" class="toc-link" data-tr="Müzakere Engellerinin Anatomisi" data-en="Anatomy of Negotiation Obstacles">Müzakere Engellerinin Anatomisi</a></li>
+                  <li><a href="#section-5" class="toc-link" data-tr="Sonuç: Önceki Süreçlerden Farkı" data-en="Conclusion: What's Different This Time">Sonuç: Önceki Süreçlerden Farkı</a></li>
+                </ol>
+              </nav>
+
+              <!-- Author card in sidebar -->
+              <div class="sidebar-author">
+                <img src="https://picsum.photos/seed/author1/80/80" alt="" class="sidebar-author-img">
+                <div>
+                  <a href="#" class="sidebar-author-name">Cihan Uzunçarşılı Baysal</a>
+                  <p class="sidebar-author-bio" data-tr="Türkiye-Kürt çatışması ve barış süreçleri üzerine uzmanlaşmış araştırmacı gazeteci." data-en="Investigative journalist specializing in Turkey-Kurdish conflict and peace processes.">Türkiye-Kürt çatışması ve barış süreçleri üzerine uzmanlaşmış araştırmacı gazeteci.</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Article content -->
+          <article class="article-content" id="article-content" aria-label="Makale içeriği">
+
+            <!-- Lead paragraph -->
+            <p class="article-lead" data-tr="2013-2015 barış süreci, Türkiye'nin bu topraklarda yaşanan Kürt meselesini çözmek için giriştiği en kapsamlı müzakere deneyimiydi. O süreç neden çöktü, şimdiki süreç ondan nerede farklılaşıyor?" data-en="The 2013-2015 peace process was Turkey's most comprehensive negotiation experience aimed at resolving the Kurdish issue on these lands. Why did that process collapse, and where does the current process differ?">2013-2015 barış süreci, Türkiye'nin bu topraklarda yaşanan Kürt meselesini çözmek için giriştiği en kapsamlı müzakere deneyimiydi. O süreç neden çöktü, şimdiki süreç ondan nerede farklılaşıyor?</p>
+
+            <!-- Section 1 -->
+            <h2 id="section-1" data-tr="Yeni Süreç Nasıl Başladı?" data-en="How Did the New Process Begin?">Yeni Süreç Nasıl Başladı?</h2>
+
+            <p data-tr="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." data-en="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+
+            <p data-tr="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo." data-en="Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+
+            <!-- Pull quote -->
+            <blockquote class="pull-quote">
+              <p data-tr="Müzakere her zaman güvensizlik içinde yürütülür. Asıl mesele, o güvensizliğe rağmen masada kalmayı tercih eden iradenin sürekliliğidir." data-en="Negotiations are always conducted within mistrust. The real issue is the continuity of the will that chooses to remain at the table despite that mistrust.">&ldquo;Müzakere her zaman güvensizlik içinde yürütülür. Asıl mesele, o güvensizliğe rağmen masada kalmayı tercih eden iradenin sürekliliğidir.&rdquo;</p>
+              <footer><cite data-tr="Eski bir devlet müzakerecisi, anonim" data-en="Former state negotiator, anonymous">Eski bir devlet müzakerecisi, anonim</cite></footer>
+            </blockquote>
+
+            <p data-tr="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet." data-en="Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.</p>
+
+            <!-- Inline image -->
+            <figure class="article-figure">
+              <img src="https://picsum.photos/seed/article-fig1/900/500" alt="Müzakere odası" loading="lazy">
+              <figcaption data-tr="Müzakere odaları, kamuoyundan gizlenen bilgilerle dolu. Fotoğraf: Arşiv" data-en="Negotiating rooms are full of information hidden from the public. Photo: Archive">Müzakere odaları, kamuoyundan gizlenen bilgilerle dolu. Fotoğraf: Arşiv</figcaption>
+            </figure>
+
+            <!-- Section 2 -->
+            <h2 id="section-2" data-tr="Masadakiler ve Beklentiler" data-en="The Parties and Their Expectations">Masadakiler ve Beklentiler</h2>
+
+            <p data-tr="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident." data-en="At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+
+            <h3 data-tr="Devletin Tutumu" data-en="The State's Position">Devletin Tutumu</h3>
+
+            <p data-tr="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus." data-en="Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.">Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+
+            <!-- Info box -->
+            <div class="info-box">
+              <div class="info-box-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div>
+                <p class="info-box-title" data-tr="Bağlam Notu" data-en="Context Note">Bağlam Notu</p>
+                <p data-tr="2013 barış süreci (Oslo Görüşmeleri olarak da bilinir) dönemin Başbakanı Erdoğan ve PKK lideri Abdullah Öcalan arasındaki gizli müzakerelerle başlamış, Öcalan'ın ateşkes ilanıyla aleni hale gelmişti. Süreç Temmuz 2015'te Suruç bombalamasının ardından resmi olarak sona erdi." data-en="The 2013 peace process (also known as the Oslo Talks) began with secret negotiations between then-Prime Minister Erdoğan and PKK leader Abdullah Öcalan, becoming public with Öcalan's ceasefire declaration. The process officially ended in July 2015 following the Suruç bombing.">2013 barış süreci (Oslo Görüşmeleri olarak da bilinir) dönemin Başbakanı Erdoğan ve PKK lideri Abdullah Öcalan arasındaki gizli müzakerelerle başlamış, Öcalan'ın ateşkes ilanıyla aleni hale gelmişti. Süreç Temmuz 2015'te Suruç bombalamasının ardından resmi olarak sona erdi.</p>
+              </div>
+            </div>
+
+            <h3 data-tr="PKK ve Kürt Siyasetinin Talepleri" data-en="PKK and Kurdish Political Demands">PKK ve Kürt Siyasetinin Talepleri</h3>
+
+            <p data-tr="Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat." data-en="Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus.">Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+
+            <!-- Two-column stat block -->
+            <div class="stat-grid">
+              <div class="stat-card">
+                <span class="stat-number">40+</span>
+                <span class="stat-label" data-tr="yıllık çatışma tarihi" data-en="years of conflict history">yıllık çatışma tarihi</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">40.000+</span>
+                <span class="stat-label" data-tr="toplam can kaybı (tahmini)" data-en="total lives lost (estimated)">toplam can kaybı (tahmini)</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">3</span>
+                <span class="stat-label" data-tr="önceki barış girişimi" data-en="previous peace initiatives">önceki barış girişimi</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number">25+</span>
+                <span class="stat-label" data-tr="yıl tecrit altındaki Öcalan" data-en="years Öcalan in isolation">yıl tecrit altındaki Öcalan</span>
+              </div>
+            </div>
+
+            <!-- Section 3: Instagram Carousel -->
+            <h2 id="section-3" data-tr="Görsel Karusel: Sürecin Kronolojisi" data-en="Visual Carousel: Process Timeline">Görsel Karusel: Sürecin Kronolojisi</h2>
+
+            <p data-tr="Barış sürecinin kritik dönüm noktalarını gösteren bu görsel karuseli sola ve sağa kaydırarak inceleyebilirsiniz." data-en="You can swipe left and right through this visual carousel showing the critical turning points of the peace process.">Barış sürecinin kritik dönüm noktalarını gösteren bu görsel karuseli sola ve sağa kaydırarak inceleyebilirsiniz.</p>
+
+            <!-- CAROUSEL COMPONENT -->
+            <div class="carousel-container" aria-label="Haber karuseli" role="region">
+              <div class="carousel-track" id="article-carousel">
+
+                <div class="carousel-slide" role="group" aria-label="Slayt 1/6">
+                  <div class="carousel-card">
+                    <div class="carousel-card-img">
+                      <img src="https://picsum.photos/seed/car1/600/400" alt="2013 — Sürecin Başlangıcı" loading="lazy">
+                      <div class="carousel-card-gradient"></div>
+                      <span class="carousel-counter">01 / 06</span>
+                      <span class="carousel-date-badge">Mart 2013</span>
+                    </div>
+                    <div class="carousel-card-body">
+                      <h4 data-tr="Öcalan'ın Nevruz Mesajı" data-en="Öcalan's Nowruz Message">Öcalan'ın Nevruz Mesajı</h4>
+                      <p data-tr="Abdullah Öcalan, 21 Mart 2013 Nevruz kutlamalarında tarihi ateşkes ilanını yaptı. Milyonlarca kişinin izlediği bu anın ardından PKK militanları geri çekilme sürecine girdi." data-en="Abdullah Öcalan made his historic ceasefire declaration at Nowruz celebrations on March 21, 2013. Following this moment, watched by millions, PKK militants entered a withdrawal process.">Abdullah Öcalan, 21 Mart 2013 Nevruz kutlamalarında tarihi ateşkes ilanını yaptı. Milyonlarca kişinin izlediği bu anın ardından PKK militanları geri çekilme sürecine girdi.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-slide" role="group" aria-label="Slayt 2/6">
+                  <div class="carousel-card">
+                    <div class="carousel-card-img">
+                      <img src="https://picsum.photos/seed/car2/600/400" alt="2013 Dolmabahçe" loading="lazy">
+                      <div class="carousel-card-gradient"></div>
+                      <span class="carousel-counter">02 / 06</span>
+                      <span class="carousel-date-badge">Şubat 2015</span>
+                    </div>
+                    <div class="carousel-card-body">
+                      <h4 data-tr="Dolmabahçe Mutabakatı" data-en="Dolmabahçe Consensus">Dolmabahçe Mutabakatı</h4>
+                      <p data-tr="HDP Eş Genel Başkanları ve hükümet yetkilileri arasında varılan Dolmabahçe Mutabakatı, barış sürecini belgeye döktü. Erdoğan'ın birkaç hafta sonra mutabakatı reddetmesi sürecin sonunun başlangıcı oldu." data-en="The Dolmabahçe Consensus reached between HDP co-chairs and government officials put the peace process into writing. Erdoğan's rejection of the consensus a few weeks later marked the beginning of the end of the process.">HDP Eş Genel Başkanları ve hükümet yetkilileri arasında varılan Dolmabahçe Mutabakatı, barış sürecini belgeye döktü. Erdoğan'ın birkaç hafta sonra mutabakatı reddetmesi sürecin sonunun başlangıcı oldu.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-slide" role="group" aria-label="Slayt 3/6">
+                  <div class="carousel-card">
+                    <div class="carousel-card-img">
+                      <img src="https://picsum.photos/seed/car3/600/400" alt="2015 Suruç" loading="lazy">
+                      <div class="carousel-card-gradient"></div>
+                      <span class="carousel-counter">03 / 06</span>
+                      <span class="carousel-date-badge">Temmuz 2015</span>
+                    </div>
+                    <div class="carousel-card-body">
+                      <h4 data-tr="Suruç Bombalaması ve Çöküş" data-en="Suruç Bombing and Collapse">Suruç Bombalaması ve Çöküş</h4>
+                      <p data-tr="33 gencin hayatını kaybettiği Suruç saldırısı, süreci fiilen bitirdi. PKK ateşkesi sona erdirdi; kentsel çatışma dönemi başladı. Sur, Nusaybin, Cizre aylarca abluka altında kaldı." data-en="The Suruç attack, in which 33 young people lost their lives, effectively ended the process. PKK terminated the ceasefire; the urban conflict period began. Sur, Nusaybin, Cizre remained under siege for months.">33 gencin hayatını kaybettiği Suruç saldırısı, süreci fiilen bitirdi. PKK ateşkesi sona erdirdi; kentsel çatışma dönemi başladı. Sur, Nusaybin, Cizre aylarca abluka altında kaldı.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-slide" role="group" aria-label="Slayt 4/6">
+                  <div class="carousel-card">
+                    <div class="carousel-card-img">
+                      <img src="https://picsum.photos/seed/car4/600/400" alt="2022 MİT" loading="lazy">
+                      <div class="carousel-card-gradient"></div>
+                      <span class="carousel-counter">04 / 06</span>
+                      <span class="carousel-date-badge">2022-2024</span>
+                    </div>
+                    <div class="carousel-card-body">
+                      <h4 data-tr="Gizli Temaslar Dönemi" data-en="Period of Secret Contacts">Gizli Temaslar Dönemi</h4>
+                      <p data-tr="Kamuoyunda çatışmanın sürdüğü yıllarda MİT aracılığıyla Öcalan ile bağlantı hiç kesilmedi. 2022-2024 arasında bu temasların yoğunlaştığı, Öcalan'ın tecrit koşullarının kısmen hafifletildiği bildirildi." data-en="While conflict continued publicly, contact with Öcalan through MİT was never severed. Between 2022-2024, these contacts were reported to have intensified and Öcalan's isolation conditions were partially eased.">Kamuoyunda çatışmanın sürdüğü yıllarda MİT aracılığıyla Öcalan ile bağlantı hiç kesilmedi. 2022-2024 arasında bu temasların yoğunlaştığı, Öcalan'ın tecrit koşullarının kısmen hafifletildiği bildirildi.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-slide" role="group" aria-label="Slayt 5/6">
+                  <div class="carousel-card">
+                    <div class="carousel-card-img">
+                      <img src="https://picsum.photos/seed/car5/600/400" alt="2025 ateşkes" loading="lazy">
+                      <div class="carousel-card-gradient"></div>
+                      <span class="carousel-counter">05 / 06</span>
+                      <span class="carousel-date-badge">Ocak 2025</span>
+                    </div>
+                    <div class="carousel-card-body">
+                      <h4 data-tr="Öcalan'ın Yeni Çağrısı" data-en="Öcalan's New Call">Öcalan'ın Yeni Çağrısı</h4>
+                      <p data-tr="Yıllarca süren sessizliğin ardından Öcalan, Ocak 2025'te DEM Parti heyetiyle görüştükten sonra silah bırakma ve müzakere çağrısında bulundu. Çağrı PKK tarafından kabul edildi." data-en="After years of silence, Öcalan called for disarmament and negotiations in January 2025 after meeting with the DEM Party delegation. The call was accepted by the PKK.">Yıllarca süren sessizliğin ardından Öcalan, Ocak 2025'te DEM Parti heyetiyle görüştükten sonra silah bırakma ve müzakere çağrısında bulundu. Çağrı PKK tarafından kabul edildi.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="carousel-slide" role="group" aria-label="Slayt 6/6">
+                  <div class="carousel-card">
+                    <div class="carousel-card-img">
+                      <img src="https://picsum.photos/seed/car6/600/400" alt="2025 ateşkes" loading="lazy">
+                      <div class="carousel-card-gradient"></div>
+                      <span class="carousel-counter">06 / 06</span>
+                      <span class="carousel-date-badge">Mart 2025</span>
+                    </div>
+                    <div class="carousel-card-body">
+                      <h4 data-tr="PKK Ateşkes İlanı" data-en="PKK Ceasefire Declaration">PKK Ateşkes İlanı</h4>
+                      <p data-tr="PKK, Mart 2025'te tek taraflı ateşkes ilan ederek müzakere sürecine hazır olduğunu duyurdu. Türk devletinin resmi yanıtı temkinli olmakla birlikte diyaloğa açık bir dil içerdi." data-en="The PKK declared a unilateral ceasefire in March 2025 and announced it was ready for the negotiation process. The Turkish state's official response was cautious but contained language open to dialogue.">PKK, Mart 2025'te tek taraflı ateşkes ilan ederek müzakere sürecine hazır olduğunu duyurdu. Türk devletinin resmi yanıtı temkinli olmakla birlikte diyaloğa açık bir dil içerdi.</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div><!-- /carousel-track -->
+
+              <div class="carousel-controls">
+                <button class="carousel-btn carousel-prev" id="carousel-prev" aria-label="Önceki slayt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="carousel-dots" id="carousel-dots" role="tablist">
+                  <button class="c-dot active" role="tab" aria-selected="true"></button>
+                  <button class="c-dot" role="tab" aria-selected="false"></button>
+                  <button class="c-dot" role="tab" aria-selected="false"></button>
+                  <button class="c-dot" role="tab" aria-selected="false"></button>
+                  <button class="c-dot" role="tab" aria-selected="false"></button>
+                  <button class="c-dot" role="tab" aria-selected="false"></button>
+                </div>
+                <button class="carousel-btn carousel-next" id="carousel-next" aria-label="Sonraki slayt">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </div>
+            </div><!-- /carousel-container -->
+
+            <!-- Section 4 -->
+            <h2 id="section-4" data-tr="Müzakere Engellerinin Anatomisi" data-en="Anatomy of Negotiation Obstacles">Müzakere Engellerinin Anatomisi</h2>
+
+            <p data-tr="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium." data-en="Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos.">Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium.</p>
+
+            <!-- Ordered key points list -->
+            <ol class="article-keypoints">
+              <li>
+                <strong data-tr="Güven Açığı" data-en="Trust Deficit">Güven Açığı</strong>
+                <p data-tr="Her iki taraf da önceki süreçlerin yaralarını taşıyor. Özellikle 2015 sonrası kentsel operasyonlar Kürt siyasetinde derin bir güvensizlik bıraktı." data-en="Both sides carry the wounds of previous processes. Especially the post-2015 urban operations left deep distrust in Kurdish politics.">Her iki taraf da önceki süreçlerin yaralarını taşıyor. Özellikle 2015 sonrası kentsel operasyonlar Kürt siyasetinde derin bir güvensizlik bıraktı.</p>
+              </li>
+              <li>
+                <strong data-tr="Hukuki Güvence Sorunu" data-en="Legal Guarantee Problem">Hukuki Güvence Sorunu</strong>
+                <p data-tr="PKK'nın silah bırakması için anayasal güvence talep etmesi, mevcut parlamento aritmetiğinde neredeyse imkânsız bir şart." data-en="PKK's demand for constitutional guarantees to lay down arms is an almost impossible condition in the current parliamentary arithmetic.">PKK'nın silah bırakması için anayasal güvence talep etmesi, mevcut parlamento aritmetiğinde neredeyse imkânsız bir şart.</p>
+              </li>
+              <li>
+                <strong data-tr="Öcalan'ın Statüsü" data-en="Öcalan's Status">Öcalan'ın Statüsü</strong>
+                <p data-tr="PKK, Öcalan'ın serbest bırakılmasını ya da ev hapsine alınmasını sürecin ön koşullarından biri olarak tanımlıyor. Hükümet bu konuda adım atmak istemiyor." data-en="The PKK defines Öcalan's release or house arrest as one of the preconditions of the process. The government is unwilling to take steps on this.">PKK, Öcalan'ın serbest bırakılmasını ya da ev hapsine alınmasını sürecin ön koşullarından biri olarak tanımlıyor. Hükümet bu konuda adım atmak istemiyor.</p>
+              </li>
+              <li>
+                <strong data-tr="Suriye Faktörü" data-en="Syria Factor">Suriye Faktörü</strong>
+                <p data-tr="Kuzey Suriye'deki Kürt özerk yönetimiyle PKK arasındaki organik bağ, Türkiye'nin müzakere masasındaki en büyük çekinceleri arasında yer alıyor." data-en="The organic link between the Kurdish autonomous administration in northern Syria and the PKK is among Turkey's biggest reservations at the negotiating table.">Kuzey Suriye'deki Kürt özerk yönetimiyle PKK arasındaki organik bağ, Türkiye'nin müzakere masasındaki en büyük çekinceleri arasında yer alıyor.</p>
+              </li>
+            </ol>
+
+            <!-- Section 5 -->
+            <h2 id="section-5" data-tr="Sonuç: Önceki Süreçlerden Farkı" data-en="Conclusion: What's Different This Time">Sonuç: Önceki Süreçlerden Farkı</h2>
+
+            <p data-tr="Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit." data-en="Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit.">Ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit.</p>
+
+            <p data-tr="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit." data-en="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+
+            <!-- Closing quote -->
+            <blockquote class="pull-quote pull-quote-accent">
+              <p data-tr="Bu süreci diğerlerinden ayıran tek şey, her iki tarafın da başka bir seçeneğinin kalmadığını bilmesidir. Bu hem en güçlü güvence hem de en büyük risk." data-en="The only thing that distinguishes this process from the others is that both sides know they have no other option. This is both the strongest guarantee and the greatest risk.">&ldquo;Bu süreci diğerlerinden ayıran tek şey, her iki tarafın da başka bir seçeneğinin kalmadığını bilmesidir. Bu hem en güçlü güvence hem de en büyük risk.&rdquo;</p>
+              <footer><cite data-tr="Bir Kürt siyasetçi, anonim" data-en="A Kurdish politician, anonymous">Bir Kürt siyasetçi, anonim</cite></footer>
+            </blockquote>
+
+            <!-- Article footer -->
+            <footer class="article-footer">
+              <div class="article-tags-footer">
+                <span data-tr="Etiketler:" data-en="Tags:">Etiketler:</span>
+                <a href="#" class="tag" data-tr="Barış Süreci" data-en="Peace Process">Barış Süreci</a>
+                <a href="#" class="tag" data-tr="PKK" data-en="PKK">PKK</a>
+                <a href="#" class="tag" data-tr="Kürt Siyaseti" data-en="Kurdish Politics">Kürt Siyaseti</a>
+                <a href="#" class="tag" data-tr="Müzakere" data-en="Negotiation">Müzakere</a>
+                <a href="#" class="tag" data-tr="Öcalan" data-en="Öcalan">Öcalan</a>
+              </div>
+
+              <div class="article-share-footer">
+                <span data-tr="Paylaş:" data-en="Share:">Paylaş:</span>
+                <button class="share-btn" id="share-copy-bottom" aria-label="Bağlantıyı kopyala">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                  <span data-tr="Bağlantıyı Kopyala" data-en="Copy Link">Bağlantıyı Kopyala</span>
+                </button>
+              </div>
+
+              <!-- Author bio -->
+              <div class="author-bio-card">
+                <img src="https://picsum.photos/seed/author1/120/120" alt="Cihan Uzunçarşılı Baysal" class="author-bio-img">
+                <div class="author-bio-text">
+                  <a href="#" class="author-bio-name">Cihan Uzunçarşılı Baysal</a>
+                  <p class="author-bio-role" data-tr="Araştırmacı Gazeteci" data-en="Investigative Journalist">Araştırmacı Gazeteci</p>
+                  <p data-tr="Yirmi yılı aşkın süredir Türkiye'deki insan hakları ihlalleri, Kürt meselesi ve çatışma çözümü üzerine yazan gazeteci. Helsinki Yurttaşlar Derneği eski direktörü." data-en="A journalist who has been writing about human rights violations, the Kurdish question and conflict resolution in Turkey for more than twenty years. Former director of Helsinki Citizens' Assembly.">Yirmi yılı aşkın süredir Türkiye'deki insan hakları ihlalleri, Kürt meselesi ve çatışma çözümü üzerine yazan gazeteci. Helsinki Yurttaşlar Derneği eski direktörü.</p>
+                </div>
+              </div>
+            </footer>
+
+          </article><!-- /article-content -->
+        </div><!-- /article-grid -->
+      </div>
+    </div><!-- /article-layout -->
+
+    <!-- ── RELATED ARTICLES ──────────────────────────────────── -->
+    <section class="section-related" aria-labelledby="related-heading">
+      <div class="container">
+        <h2 class="section-heading" id="related-heading" data-tr="İlgili Yazılar" data-en="Related Articles">İlgili Yazılar</h2>
+        <div class="card-row" style="margin-top:28px">
+          <article class="card-article">
+            <a href="article.html" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/rel1/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Araştırma" data-en="Research">Araştırma</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="article.html" data-tr="Silah Bırakmanın Bedeli: Tarihsel Karşılaştırma" data-en="The Cost of Disarmament: A Historical Comparison">Silah Bırakmanın Bedeli: Tarihsel Karşılaştırma</a></h3>
+              <p class="card-excerpt" data-tr="IRA'dan FARC'a dünyadan örnekler ve Türkiye'ye yansımaları." data-en="Examples from IRA to FARC and their reflections on Turkey.">IRA'dan FARC'a dünyadan örnekler ve Türkiye'ye yansımaları.</p>
+              <div class="card-footer"><span class="card-author">Güneş Murat Tezcür</span><time>28 Mart 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article">
+            <a href="article.html" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/rel2/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Portre" data-en="Portrait">Portre</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="article.html" data-tr="Abdullah Öcalan: Bir Sürecin Sembolü mü, Aktörü mü?" data-en="Abdullah Öcalan: Symbol or Actor of a Process?">Abdullah Öcalan: Bir Sürecin Sembolü mü, Aktörü mü?</a></h3>
+              <p class="card-excerpt" data-tr="Yirmi beş yıllık tecrit sonrası gündeme gelen siyasi rolünün kapsamı." data-en="The scope of the political role that emerged after twenty-five years of isolation.">Yirmi beş yıllık tecrit sonrası gündeme gelen siyasi rolünün kapsamı.</p>
+              <div class="card-footer"><span class="card-author">Hêvî Çeto</span><time>29 Mart 2026</time></div>
+            </div>
+          </article>
+          <article class="card-article">
+            <a href="article.html" class="card-img-wrap">
+              <img src="https://picsum.photos/seed/rel3/480/300" alt="" loading="lazy">
+              <span class="card-tag" data-tr="Odak" data-en="Focus">Odak</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="article.html" data-tr="Çatışma Sonrası Kentte Yeniden Yapılanma" data-en="Reconstruction in the Post-Conflict City">Çatışma Sonrası Kentte Yeniden Yapılanma</a></h3>
+              <p class="card-excerpt" data-tr="Operasyonlar sonrası Sur, Nusaybin ve Cizre'de bugünkü tablo." data-en="Today's picture in Sur, Nusaybin and Cizre after operations.">Operasyonlar sonrası Sur, Nusaybin ve Cizre'de bugünkü tablo.</p>
+              <div class="card-footer"><span class="card-author">Yalçın Büyük</span><time>31 Mart 2026</time></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span class="logo-wordmark">retell <strong>visual</strong></span></a>
+          <p class="footer-tagline" data-tr="Toplumsal hikâyeler, araştırma ve yeni medya anlatıları — Türkçe ve İngilizce." data-en="Social stories, research and new media narratives — in Turkish and English.">Toplumsal hikâyeler, araştırma ve yeni medya anlatıları — Türkçe ve İngilizce.</p>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#" class="social-link" aria-label="X"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          </div>
+        </div>
+        <nav class="footer-nav" aria-label="Footer menü">
+          <div class="footer-col"><h4 data-tr="Saha" data-en="Field">Saha</h4><ul><li><a href="index.html#saha" data-tr="Araştırma" data-en="Research">Araştırma</a></li><li><a href="index.html#saha" data-tr="Dosya" data-en="Files">Dosya</a></li><li><a href="index.html#saha" data-tr="Odak" data-en="Focus">Odak</a></li></ul></div>
+          <div class="footer-col"><h4 data-tr="Coğrafya" data-en="Geography">Coğrafya</h4><ul><li><a href="index.html#cografya" data-tr="Hafıza" data-en="Memory">Hafıza</a></li><li><a href="index.html#cografya" data-tr="Göç" data-en="Migration">Göç</a></li><li><a href="index.html#cografya" data-tr="Portre" data-en="Portrait">Portre</a></li></ul></div>
+          <div class="footer-col"><h4 data-tr="Kültür" data-en="Culture">Kültür</h4><ul><li><a href="index.html#kultur" data-tr="Sinema" data-en="Cinema">Sinema</a></li><li><a href="index.html#kultur" data-tr="Kitap" data-en="Books">Kitap</a></li><li><a href="index.html#kultur" data-tr="Müzik" data-en="Music">Müzik</a></li></ul></div>
+          <div class="footer-col"><h4 data-tr="Multimedya" data-en="Multimedia">Multimedya</h4><ul><li><a href="index.html#multimedya" data-tr="Video" data-en="Video">Video</a></li><li><a href="index.html#multimedya" data-tr="Podcast" data-en="Podcast">Podcast</a></li><li><a href="index.html#multimedya" data-tr="Fotoğraf" data-en="Photo Stories">Fotoğraf</a></li></ul></div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright" data-tr="© 2026 Retell Visual. Tüm hakları saklıdır." data-en="© 2026 Retell Visual. All rights reserved.">© 2026 Retell Visual. Tüm hakları saklıdır.</p>
+        <div class="footer-links">
+          <a href="#" data-tr="Hakkımızda" data-en="About">Hakkımızda</a>
+          <a href="#" data-tr="İletişim" data-en="Contact">İletişim</a>
+          <a href="#" data-tr="Gizlilik" data-en="Privacy">Gizlilik</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="article.js"></script>
+</body>
+</html>

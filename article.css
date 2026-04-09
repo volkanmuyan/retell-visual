@@ -254,9 +254,11 @@
 
 /* Focus mode */
 body.focus-mode .article-sidebar,
-body.focus-mode .article-toolbar .toolbar-left,
 body.focus-mode .article-toolbar .toolbar-right,
 body.focus-mode .site-header .main-nav { opacity: 0.2; pointer-events: none; }
+
+body.focus-mode .article-toolbar .toolbar-left .a11y-btn:not(#focus-mode) { opacity: 0.2; pointer-events: none; }
+body.focus-mode #focus-mode { opacity: 1; pointer-events: auto; }
 body.focus-mode .article-content { max-width: 660px; margin: 0 auto; }
 
 .article-lead {

@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retell Visual — Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ── SIDEBAR ──────────────────────────────────────────── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a href="../index.html" class="sidebar-logo" target="_blank">
+        <span class="logo-wordmark">retell <strong>visual</strong></span>
+        <span class="admin-badge">admin</span>
+      </a>
+      <button class="sidebar-close" id="sidebar-close" aria-label="Menüyü kapat">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <p class="nav-section-label">Genel</p>
+      <ul>
+        <li><a href="#" class="nav-item active" data-view="dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a></li>
+      </ul>
+
+      <p class="nav-section-label">İçerik</p>
+      <ul>
+        <li><a href="#" class="nav-item" data-view="articles">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Yazılar
+          <span class="nav-badge" id="articles-count">0</span>
+        </a></li>
+        <li><a href="#" class="nav-item" data-view="new-article">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Yeni Yazı
+        </a></li>
+      </ul>
+
+      <p class="nav-section-label">Bülten</p>
+      <ul>
+        <li><a href="#" class="nav-item" data-view="newsletter">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Bülten Gönder
+        </a></li>
+        <li><a href="#" class="nav-item" data-view="subscribers">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Aboneler
+          <span class="nav-badge" id="subs-count">0</span>
+        </a></li>
+      </ul>
+
+      <p class="nav-section-label">Sistem</p>
+      <ul>
+        <li><a href="#" class="nav-item" data-view="settings">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Ayarlar
+        </a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button class="theme-toggle-sidebar" id="theme-toggle">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <span class="theme-label">Açık Mod</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ─────────────────────────────────────────────── -->
+  <div class="admin-main" id="admin-main">
+
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="topbar-menu" id="sidebar-open" aria-label="Menüyü aç">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <h1 class="topbar-title" id="topbar-title">Dashboard</h1>
+      <div class="topbar-actions">
+        <a href="../index.html" target="_blank" class="topbar-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Siteyi Gör
+        </a>
+      </div>
+    </header>
+
+    <!-- ── VIEW: DASHBOARD ─────────────────────────────────── -->
+    <div class="view active" id="view-dashboard">
+      <div class="view-inner">
+
+        <div class="stat-row">
+          <div class="stat-tile">
+            <div class="stat-tile-icon icon-blue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div>
+              <p class="stat-tile-label">Toplam Yazı</p>
+              <p class="stat-tile-value" id="dash-articles">0</p>
+            </div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-tile-icon icon-green">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <div>
+              <p class="stat-tile-label">Abone</p>
+              <p class="stat-tile-value" id="dash-subs">0</p>
+            </div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-tile-icon icon-red">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <p class="stat-tile-label">Gönderilen Bülten</p>
+              <p class="stat-tile-value" id="dash-newsletters">0</p>
+            </div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-tile-icon icon-amber">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+              <p class="stat-tile-label">Taslak</p>
+              <p class="stat-tile-value" id="dash-drafts">0</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick actions -->
+        <div class="section-block">
+          <h2 class="block-title">Hızlı İşlemler</h2>
+          <div class="quick-actions">
+            <button class="quick-btn" data-view="new-article">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Yeni Yazı
+            </button>
+            <button class="quick-btn" data-view="newsletter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Bülten Gönder
+            </button>
+            <button class="quick-btn" data-view="articles">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              Yazıları Yönet
+            </button>
+            <button class="quick-btn" data-view="subscribers">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Aboneler
+            </button>
+          </div>
+        </div>
+
+        <!-- Recent articles -->
+        <div class="section-block">
+          <div class="block-head">
+            <h2 class="block-title">Son Yazılar</h2>
+            <button class="link-btn" data-view="articles">Tümünü Gör →</button>
+          </div>
+          <div id="dash-recent-list" class="article-list"></div>
+          <div class="empty-state hidden" id="dash-empty">
+            <p>Henüz yazı yok. <button class="link-btn" data-view="new-article">İlk yazını ekle →</button></p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── VIEW: ARTICLES LIST ─────────────────────────────── -->
+    <div class="view" id="view-articles">
+      <div class="view-inner">
+        <div class="block-head">
+          <h2 class="block-title">Tüm Yazılar</h2>
+          <button class="btn-primary" data-view="new-article">+ Yeni Yazı</button>
+        </div>
+
+        <div class="filter-bar">
+          <input type="search" id="article-search" class="search-input" placeholder="Yazı ara...">
+          <select id="article-filter-cat" class="select-input">
+            <option value="">Tüm Kategoriler</option>
+            <option value="saha">Saha</option>
+            <option value="cografya">Coğrafya</option>
+            <option value="kultur">Kültür</option>
+            <option value="multimedya">Multimedya</option>
+          </select>
+          <select id="article-filter-status" class="select-input">
+            <option value="">Tüm Durumlar</option>
+            <option value="published">Yayında</option>
+            <option value="draft">Taslak</option>
+          </select>
+        </div>
+
+        <div id="articles-list" class="article-list"></div>
+        <div class="empty-state hidden" id="articles-empty">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <p>Henüz yazı eklenmedi.</p>
+          <button class="btn-primary" data-view="new-article">+ Yeni Yazı Ekle</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── VIEW: NEW / EDIT ARTICLE ───────────────────────── -->
+    <div class="view" id="view-new-article">
+      <div class="view-inner view-editor">
+
+        <div class="editor-layout">
+
+          <!-- Editor main -->
+          <div class="editor-main">
+            <div class="form-group">
+              <label class="form-label" for="art-title">Başlık <span class="required">*</span></label>
+              <input type="text" id="art-title" class="form-input input-lg" placeholder="Yazı başlığını girin...">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="art-subtitle">Alt Başlık / Özet</label>
+              <textarea id="art-subtitle" class="form-input form-textarea" rows="2" placeholder="Kısa bir özet veya alt başlık..."></textarea>
+            </div>
+
+            <!-- Cover image -->
+            <div class="form-group">
+              <label class="form-label">Kapak Görseli</label>
+              <div class="image-upload-zone" id="image-drop-zone">
+                <div class="image-preview hidden" id="image-preview-wrap">
+                  <img id="image-preview-img" src="" alt="Önizleme">
+                  <button class="image-remove" id="image-remove" aria-label="Görseli kaldır">✕</button>
+                </div>
+                <div class="image-placeholder" id="image-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <p>Görsel URL'si girin veya dosya seç</p>
+                  <input type="file" id="art-image-file" accept="image/*" class="file-input">
+                  <button class="btn-sm" onclick="document.getElementById('art-image-file').click()">Dosya Seç</button>
+                </div>
+              </div>
+              <input type="url" id="art-image-url" class="form-input mt-8" placeholder="https://... görsel URL'si">
+            </div>
+
+            <!-- Content editor -->
+            <div class="form-group">
+              <label class="form-label">İçerik</label>
+              <div class="editor-toolbar" role="toolbar" aria-label="Biçimlendirme araçları">
+                <button class="editor-tool" data-cmd="bold" title="Kalın"><strong>B</strong></button>
+                <button class="editor-tool" data-cmd="italic" title="İtalik"><em>I</em></button>
+                <button class="editor-tool" data-cmd="underline" title="Altı çizili"><u>U</u></button>
+                <span class="tool-sep"></span>
+                <button class="editor-tool" data-cmd="h2" title="Başlık 2">H2</button>
+                <button class="editor-tool" data-cmd="h3" title="Başlık 3">H3</button>
+                <button class="editor-tool" data-cmd="blockquote" title="Alıntı">❝</button>
+                <span class="tool-sep"></span>
+                <button class="editor-tool" data-cmd="insertUnorderedList" title="Liste">≡</button>
+                <button class="editor-tool" data-cmd="insertOrderedList" title="Numaralı liste">1.</button>
+                <span class="tool-sep"></span>
+                <button class="editor-tool" data-cmd="link" title="Bağlantı">🔗</button>
+              </div>
+              <div
+                id="art-content"
+                class="content-editor"
+                contenteditable="true"
+                role="textbox"
+                aria-multiline="true"
+                aria-label="Yazı içeriği"
+                data-placeholder="Yazınızı buraya yazın..."
+              ></div>
+            </div>
+          </div>
+
+          <!-- Editor sidebar -->
+          <aside class="editor-sidebar">
+
+            <!-- Publish box -->
+            <div class="editor-panel">
+              <div class="panel-head">
+                <h3>Yayın</h3>
+                <span class="status-badge draft" id="status-badge">Taslak</span>
+              </div>
+              <div class="panel-body">
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Durum</label>
+                  <select id="art-status" class="select-input">
+                    <option value="draft">Taslak</option>
+                    <option value="published">Yayında</option>
+                  </select>
+                </div>
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Yayın Tarihi</label>
+                  <input type="date" id="art-date" class="form-input">
+                </div>
+                <div class="editor-actions">
+                  <button class="btn-outline-sm" id="save-draft-btn">Taslak Kaydet</button>
+                  <button class="btn-primary-sm" id="publish-btn">Yayınla</button>
+                </div>
+                <button class="btn-danger-sm hidden" id="delete-btn">Yazıyı Sil</button>
+              </div>
+            </div>
+
+            <!-- Category -->
+            <div class="editor-panel">
+              <div class="panel-head"><h3>Kategori & Etiketler</h3></div>
+              <div class="panel-body">
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Ana Kategori <span class="required">*</span></label>
+                  <select id="art-category" class="select-input">
+                    <option value="">Seçin...</option>
+                    <option value="saha">Saha</option>
+                    <option value="cografya">Coğrafya</option>
+                    <option value="kultur">Kültür</option>
+                    <option value="multimedya">Multimedya</option>
+                  </select>
+                </div>
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Alt Kategori</label>
+                  <select id="art-subcategory" class="select-input">
+                    <option value="">Seçin...</option>
+                  </select>
+                </div>
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Etiketler</label>
+                  <div class="tag-input-wrap" id="tag-input-wrap">
+                    <input type="text" id="tag-input" class="tag-input" placeholder="Etiket ekle, Enter'a bas">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Author -->
+            <div class="editor-panel">
+              <div class="panel-head"><h3>Yazar</h3></div>
+              <div class="panel-body">
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Yazar Adı <span class="required">*</span></label>
+                  <input type="text" id="art-author" class="form-input" placeholder="Yazar adı">
+                </div>
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Ünvan</label>
+                  <input type="text" id="art-author-role" class="form-input" placeholder="Araştırmacı Gazeteci">
+                </div>
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Yazar Fotoğrafı URL</label>
+                  <input type="url" id="art-author-img" class="form-input" placeholder="https://...">
+                </div>
+              </div>
+            </div>
+
+            <!-- SEO -->
+            <div class="editor-panel">
+              <div class="panel-head"><h3>SEO / Meta</h3></div>
+              <div class="panel-body">
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Slug (URL)</label>
+                  <input type="text" id="art-slug" class="form-input" placeholder="yazi-basligi">
+                </div>
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Dil</label>
+                  <select id="art-lang" class="select-input">
+                    <option value="tr">Türkçe</option>
+                    <option value="en">English</option>
+                    <option value="both">TR + EN</option>
+                  </select>
+                </div>
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Okuma Süresi (dk)</label>
+                  <input type="number" id="art-readtime" class="form-input" placeholder="5" min="1">
+                </div>
+              </div>
+            </div>
+
+          </aside>
+        </div><!-- /editor-layout -->
+
+        <!-- Hidden edit ID -->
+        <input type="hidden" id="edit-article-id" value="">
+
+      </div>
+    </div>
+
+    <!-- ── VIEW: NEWSLETTER ────────────────────────────────── -->
+    <div class="view" id="view-newsletter">
+      <div class="view-inner">
+        <h2 class="block-title" style="margin-bottom:24px">Bülten Gönder</h2>
+
+        <div class="newsletter-layout">
+          <div class="newsletter-editor">
+
+            <div class="form-group">
+              <label class="form-label" for="nl-subject">Konu Satırı <span class="required">*</span></label>
+              <input type="text" id="nl-subject" class="form-input" placeholder="Bülten konusu...">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="nl-preheader">Ön İzleme Metni</label>
+              <input type="text" id="nl-preheader" class="form-input" placeholder="E-posta önizlemesinde görünen kısa metin...">
+            </div>
+
+            <!-- Template picker -->
+            <div class="form-group">
+              <label class="form-label">Şablon</label>
+              <div class="template-grid">
+                <label class="template-card selected">
+                  <input type="radio" name="nl-template" value="weekly" checked>
+                  <div class="template-preview tpl-weekly">
+                    <div class="tpl-header"></div>
+                    <div class="tpl-lines"><span></span><span></span><span class="short"></span></div>
+                    <div class="tpl-cards"><span></span><span></span></div>
+                  </div>
+                  <span>Haftalık Seçki</span>
+                </label>
+                <label class="template-card">
+                  <input type="radio" name="nl-template" value="breaking">
+                  <div class="template-preview tpl-breaking">
+                    <div class="tpl-big-img"></div>
+                    <div class="tpl-lines"><span></span><span></span></div>
+                  </div>
+                  <span>Son Dakika</span>
+                </label>
+                <label class="template-card">
+                  <input type="radio" name="nl-template" value="digest">
+                  <div class="template-preview tpl-digest">
+                    <div class="tpl-lines"><span></span><span></span><span></span><span class="short"></span></div>
+                  </div>
+                  <span>Özet Liste</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Article picker -->
+            <div class="form-group">
+              <label class="form-label">Öne Çıkan Yazı</label>
+              <select id="nl-featured-article" class="select-input">
+                <option value="">Yazı seçin (opsiyonel)...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="nl-body">Bülten Mesajı <span class="required">*</span></label>
+              <textarea id="nl-body" class="form-input form-textarea" rows="8" placeholder="Bu haftanın öne çıkan konuları ve editör notu..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="nl-cta">CTA Butonu Metni</label>
+              <input type="text" id="nl-cta" class="form-input" placeholder="Devamını Oku →" value="Devamını Oku →">
+            </div>
+
+          </div>
+
+          <!-- Newsletter preview & send -->
+          <div class="newsletter-sidebar">
+
+            <div class="editor-panel">
+              <div class="panel-head"><h3>Gönderim</h3></div>
+              <div class="panel-body">
+                <div class="sub-summary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                  <span id="nl-sub-count">0 abone</span>
+                </div>
+                <div class="form-group-sm">
+                  <label class="form-label-sm">Gönderim Zamanı</label>
+                  <select id="nl-send-time" class="select-input">
+                    <option value="now">Şimdi Gönder</option>
+                    <option value="schedule">Zamanla</option>
+                  </select>
+                </div>
+                <div id="schedule-picker" class="form-group-sm hidden">
+                  <label class="form-label-sm">Tarih & Saat</label>
+                  <input type="datetime-local" id="nl-schedule-dt" class="form-input">
+                </div>
+                <div class="editor-actions">
+                  <button class="btn-outline-sm" id="nl-preview-btn">Önizle</button>
+                  <button class="btn-primary-sm" id="nl-send-btn">Gönder</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sent history -->
+            <div class="editor-panel">
+              <div class="panel-head"><h3>Gönderim Geçmişi</h3></div>
+              <div class="panel-body">
+                <div id="nl-history-list"></div>
+                <p class="empty-text hidden" id="nl-history-empty">Henüz bülten gönderilmedi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Email preview modal -->
+        <div class="nl-preview-wrap hidden" id="nl-preview-wrap">
+          <div class="nl-preview-modal">
+            <div class="nl-preview-topbar">
+              <span>E-posta Önizleme</span>
+              <button id="nl-preview-close">✕</button>
+            </div>
+            <div class="nl-preview-body" id="nl-preview-body"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── VIEW: SUBSCRIBERS ───────────────────────────────── -->
+    <div class="view" id="view-subscribers">
+      <div class="view-inner">
+        <div class="block-head">
+          <h2 class="block-title">Aboneler</h2>
+          <button class="btn-primary" id="add-sub-btn">+ Manuel Ekle</button>
+        </div>
+
+        <!-- Add subscriber inline form -->
+        <div class="inline-form hidden" id="add-sub-form">
+          <input type="email" id="new-sub-email" class="form-input" placeholder="eposta@ornek.com" style="max-width:280px">
+          <input type="text" id="new-sub-name" class="form-input" placeholder="Ad Soyad (opsiyonel)" style="max-width:200px">
+          <button class="btn-primary-sm" id="confirm-sub-btn">Ekle</button>
+          <button class="btn-outline-sm" id="cancel-sub-btn">İptal</button>
+        </div>
+
+        <div class="filter-bar">
+          <input type="search" id="sub-search" class="search-input" placeholder="E-posta veya isim ara...">
+          <select id="sub-filter" class="select-input">
+            <option value="">Tüm Aboneler</option>
+            <option value="active">Aktif</option>
+            <option value="unsubscribed">Çıkmış</option>
+          </select>
+          <button class="btn-outline-sm" id="export-subs-btn">CSV İndir</button>
+        </div>
+
+        <div id="subscribers-table-wrap">
+          <table class="data-table" id="subscribers-table">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="select-all-subs" aria-label="Tümünü seç"></th>
+                <th>E-posta</th>
+                <th>İsim</th>
+                <th>Kayıt Tarihi</th>
+                <th>Durum</th>
+                <th>İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="subscribers-tbody"></tbody>
+          </table>
+        </div>
+        <p class="empty-text hidden" id="subs-empty">Henüz abone yok.</p>
+
+      </div>
+    </div>
+
+    <!-- ── VIEW: SETTINGS ─────────────────────────────────── -->
+    <div class="view" id="view-settings">
+      <div class="view-inner" style="max-width:680px">
+        <h2 class="block-title" style="margin-bottom:24px">Site Ayarları</h2>
+
+        <div class="editor-panel">
+          <div class="panel-head"><h3>Site Bilgileri</h3></div>
+          <div class="panel-body">
+            <div class="form-group-sm">
+              <label class="form-label-sm">Site Adı</label>
+              <input type="text" id="set-sitename" class="form-input" value="Retell Visual">
+            </div>
+            <div class="form-group-sm">
+              <label class="form-label-sm">Slogan</label>
+              <input type="text" id="set-tagline" class="form-input" value="Toplumsal hikâyeler, araştırma ve yeni medya anlatıları.">
+            </div>
+            <div class="form-group-sm">
+              <label class="form-label-sm">İletişim E-postası</label>
+              <input type="email" id="set-email" class="form-input" placeholder="editor@retellvisual.com">
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-panel">
+          <div class="panel-head"><h3>Sosyal Medya</h3></div>
+          <div class="panel-body">
+            <div class="form-group-sm">
+              <label class="form-label-sm">Instagram</label>
+              <input type="url" id="set-instagram" class="form-input" placeholder="https://instagram.com/...">
+            </div>
+            <div class="form-group-sm">
+              <label class="form-label-sm">X / Twitter</label>
+              <input type="url" id="set-twitter" class="form-input" placeholder="https://x.com/...">
+            </div>
+            <div class="form-group-sm">
+              <label class="form-label-sm">YouTube</label>
+              <input type="url" id="set-youtube" class="form-input" placeholder="https://youtube.com/...">
+            </div>
+            <div class="form-group-sm">
+              <label class="form-label-sm">LinkedIn</label>
+              <input type="url" id="set-linkedin" class="form-input" placeholder="https://linkedin.com/...">
+            </div>
+          </div>
+        </div>
+
+        <div class="editor-panel">
+          <div class="panel-head"><h3>Veri Yönetimi</h3></div>
+          <div class="panel-body">
+            <p style="font-size:.85rem;color:var(--text-2);margin-bottom:16px">Tüm veriler tarayıcının localStorage'ında saklanır. Dışa aktarabilir veya sıfırlayabilirsiniz.</p>
+            <div style="display:flex;gap:10px;flex-wrap:wrap">
+              <button class="btn-outline-sm" id="export-data-btn">Veriyi Dışa Aktar (JSON)</button>
+              <button class="btn-outline-sm" id="import-data-btn">Veri İçe Aktar</button>
+              <input type="file" id="import-file" accept=".json" class="hidden">
+              <button class="btn-danger-sm" id="reset-data-btn">Tüm Veriyi Sıfırla</button>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;text-align:right">
+          <button class="btn-primary" id="save-settings-btn">Ayarları Kaydet</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /admin-main -->
+
+  <!-- ── TOAST ────────────────────────────────────────────── -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ── CONFIRM MODAL ────────────────────────────────────── -->
+  <div class="modal-overlay hidden" id="confirm-modal">
+    <div class="modal-box">
+      <p class="modal-message" id="modal-message">Bu işlemi onaylıyor musunuz?</p>
+      <div class="modal-actions">
+        <button class="btn-outline-sm" id="modal-cancel">İptal</button>
+        <button class="btn-danger-sm" id="modal-confirm">Onayla</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

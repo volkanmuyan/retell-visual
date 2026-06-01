@@ -266,12 +266,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 
 .hero-overlay {
   position: absolute; inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0,0,0,0.28) 0%,
-    rgba(0,0,0,0.10) 50%,
-    rgba(0,0,0,0.02) 100%
-  );
+  background: transparent;
 }
 
 .hero-content {
@@ -364,14 +359,14 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   padding: 0 var(--px) 32px;
   display: flex; align-items: center; gap: 16px;
 }
-.hero-dots { display: flex; gap: 8px; }
+.hero-dots { display: flex; gap: 10px; align-items: center; }
 .dot {
-  width: 28px; height: 3px; border-radius: 2px;
-  background: rgba(255,255,255,.25);
-  transition: background .3s, width .3s;
-  border: none; padding: 0;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,.30);
+  transition: background .3s, transform .3s;
+  border: none; padding: 0; flex-shrink: 0;
 }
-.dot.active { background: #fff; width: 44px; }
+.dot.active { background: #fff; transform: scale(1.35); }
 
 .hero-progress-bar {
   flex: 1; height: 2px; border-radius: 1px;

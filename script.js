@@ -140,7 +140,7 @@
       if (!feed) return;
       var adminFeed = document.createElement('div');
       adminFeed.className = 'admin-feed';
-      catArts.slice(0, 4).forEach(function(art) {
+      catArts.slice(0, 4).forEach(function(art) {  /* max 4 kart */
         var img = art.image || ('https://picsum.photos/seed/' + art.id + '/800/600');
         var a   = document.createElement('a');
         a.href  = 'article-view.html?id=' + art.id;

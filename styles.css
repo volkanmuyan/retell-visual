@@ -583,41 +583,20 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   border-color: rgba(255,255,255,.4);
 }
 
-/* ── ADMIN INJECTED FEED (Firestore'dan gelen yazılar, 4 kart max) ───── */
+/* ── ADMIN INJECTED FEED (Firestore'dan gelen yazılar, 4 eşit kart) ──── */
 .admin-feed {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2px;
-  margin-bottom: 0;
 }
-.admin-feed .card-overlay { aspect-ratio: 4/3; }
-
-/* 3. ve 4. kart: ikinci satır, eşit genişlik */
-.admin-feed .card-overlay:nth-child(3),
-.admin-feed .card-overlay:nth-child(4) {
-  grid-column: auto;
+.admin-feed .card-overlay {
+  aspect-ratio: 4/3;
 }
-/* 3. ve 4. kart için ikinci satır 2 eşit sütun */
-.admin-feed:has(.card-overlay:nth-child(3)) {
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: auto auto;
-}
-.admin-feed .card-overlay:nth-child(3) {
-  grid-column: 1;
-  grid-row: 2;
-}
-.admin-feed .card-overlay:nth-child(4) {
-  grid-column: 2;
-  grid-row: 2;
-}
-/* 5. ve sonrası gizle */
 .admin-feed .card-overlay:nth-child(n+5) { display: none; }
 
 @media (max-width: 820px) {
   .admin-feed { grid-template-columns: 1fr; }
   .admin-feed .card-overlay { aspect-ratio: 16/9; }
-  .admin-feed .card-overlay:nth-child(3),
-  .admin-feed .card-overlay:nth-child(4) { grid-column: auto; grid-row: auto; }
 }
 
 /* ── CATEGORY FEED LAYOUT (overlay cards) ───────────────────────────── */

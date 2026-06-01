@@ -47,12 +47,8 @@
       .finally(check);
   }
 
-  function fsSet(collection, id, data) {
-    return db.collection(collection).doc(id).set(data);
-  }
-  function fsDelete(collection, id) {
-    return db.collection(collection).doc(id).delete();
-  }
+  function fsSet(col, id, data)  { return db.collection(col).doc(id).set(data); }
+  function fsDelete(col, id)     { return db.collection(col).doc(id).delete(); }
 
   /* ── THEME ────────────────────────────────────────────────── */
   var html       = document.documentElement;
@@ -266,18 +262,40 @@
     imageFile.addEventListener('change', function () {
       var file = imageFile.files[0];
       if (!file) return;
-      /* Firebase Storage'a yükle, URL'yi al */
-      var filename = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
-      var ref = storage.ref('articles/' + filename);
+
+      /* Cloudinary unsigned upload (ücretsiz, kredi kartı gerekmez) */
+      var cfg = (typeof cloudinaryConfig !== 'undefined') ? cloudinaryConfig : {};
+      if (!cfg.cloudName || cfg.cloudName === 'BURAYA_CLOUD_NAME') {
+        /* Cloudinary henüz ayarlanmadı — base64 önizleme göster */
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          showPreview(e.target.result);
+          toast('Cloudinary ayarlanmadı; görsel yalnızca önizlemede görünür. firebase-config.js\'e cloudinaryConfig ekleyin.', 'info');
+        };
+        reader.readAsDataURL(file);
+        return;
+      }
+
       toast('Görsel yükleniyor…', 'info');
-      ref.put(file)
-        .then(function() { return ref.getDownloadURL(); })
-        .then(function(url) {
-          showPreview(url);
-          if (imageUrl) imageUrl.value = url;
-          toast('Görsel yüklendi ✓', 'success');
+      var formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', cfg.uploadPreset);
+
+      fetch('https://api.cloudinary.com/v1_1/' + cfg.cloudName + '/image/upload', {
+        method: 'POST',
+        body: formData
+      })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+          if (data.secure_url) {
+            showPreview(data.secure_url);
+            if (imageUrl) imageUrl.value = data.secure_url;
+            toast('Görsel yüklendi ✓', 'success');
+          } else {
+            toast('Yükleme hatası: ' + (data.error && data.error.message || 'Bilinmeyen hata'), 'error');
+          }
         })
-        .catch(function(err) { toast('Görsel yüklenemedi: ' + err.message, 'error'); });
+        .catch(function(err) { toast('Bağlantı hatası: ' + err.message, 'error'); });
     });
   }
   if (removeBtn) removeBtn.addEventListener('click', clearPreview);

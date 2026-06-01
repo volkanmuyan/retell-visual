@@ -26,7 +26,7 @@
   --purple:     #7c3aed;
 
   /* Layout */
-  --header-h: 64px;
+  --header-h: 72px;
   --max-w:    1240px;
   --px:       clamp(16px, 4vw, 32px);
   --r:        0px;
@@ -147,11 +147,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 /* Logo */
 .logo { display: flex; align-items: center; gap: 0; }
 .logo-img {
-  height: 30px;
+  height: 40px;
   width: auto;
   object-fit: contain;
   display: block;
-  /* Logo is black-on-white; invert on dark theme for white-on-dark */
   filter: invert(1);
 }
 [data-theme="light"] .logo-img { filter: none; }
@@ -161,8 +160,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .main-nav { flex: 1; }
 .nav-list  { display: flex; align-items: center; gap: 0; }
 .nav-link  {
-  padding: 8px 16px;
-  font-size: 0.84rem;
+  padding: 8px 18px;
+  font-size: 0.96rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--text-2);

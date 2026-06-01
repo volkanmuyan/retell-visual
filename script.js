@@ -7,23 +7,9 @@
 (function () {
   'use strict';
 
-  /* ── THEME ──────────────────────────────────────────────── */
-  var html        = document.documentElement;
-  var themeBtn    = document.getElementById('theme-toggle');
-  var savedTheme  = localStorage.getItem('retell-theme') ||
-                    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-  function applyTheme(t) {
-    html.setAttribute('data-theme', t);
-    localStorage.setItem('retell-theme', t);
-  }
-  applyTheme(savedTheme);
-
-  if (themeBtn) {
-    themeBtn.addEventListener('click', function () {
-      applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    });
-  }
+  /* ── THEME (sabit açık mod) ─────────────────────────────── */
+  var html = document.documentElement;
+  html.setAttribute('data-theme', 'light');
 
   /* ── LANGUAGE ───────────────────────────────────────────── */
   var langBtn   = document.getElementById('lang-toggle');

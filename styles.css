@@ -603,30 +603,27 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   .admin-feed .card-overlay { aspect-ratio: 16/9; }
 }
 
-/* ── CATEGORY FEED LAYOUT (overlay cards) ───────────────────────────── */
+/* ── CATEGORY FEED LAYOUT (2×2 eşit grid) ──────────────────────────── */
 .category-feed {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.feed-top {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2px;
 }
+/* feed-top ve feed-bottom sarmalayıcıları görünmez, çocuklar grid'e katılır */
+.feed-top,
 .feed-bottom {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  display: contents;
 }
+/* 5. kartı gizle — sadece 4 eşit kart */
+.feed-bottom .card-overlay:nth-child(3) { display: none; }
+
 .card-overlay {
   position: relative;
   overflow: hidden;
   display: block;
   cursor: pointer;
+  aspect-ratio: 4/3;
 }
-.feed-top .card-overlay    { aspect-ratio: 4/3; }
-.feed-bottom .card-overlay { aspect-ratio: 3/2; }
 .card-overlay-img {
   width: 100%; height: 100%;
   object-fit: cover;
@@ -830,12 +827,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   .card-sm .card-img-wrap  { flex: none; aspect-ratio: 16/9; }
   .card-sm .card-body      { padding: 12px 14px; }
 
-  /* Category feed responsive */
-  .feed-top    { grid-template-columns: 1fr; }
-  .feed-bottom { grid-template-columns: 1fr 1fr; }
-  .feed-top .card-overlay    { aspect-ratio: 16/9; }
-  .feed-bottom .card-overlay { aspect-ratio: 4/3; }
-  .feed-bottom .card-overlay:last-child { grid-column: 1 / -1; }
+  /* Category feed responsive — 2 sütun mobilde de devam eder */
+  .category-feed { grid-template-columns: 1fr; }
+  .card-overlay  { aspect-ratio: 16/9; }
+  .feed-bottom .card-overlay:nth-child(3) { display: none; }
 
   .spotlight-inner  { grid-template-columns: 1fr; gap: 32px; }
   .spotlight-img    { max-width: 400px; margin: 0 auto; }

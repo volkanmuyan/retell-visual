@@ -689,7 +689,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 
 .multimedia-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
 
@@ -835,8 +835,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   .spotlight-img    { max-width: 400px; margin: 0 auto; }
   .spotlight-quote  { left: 0; bottom: -10px; }
 
-  .multimedia-grid { grid-template-columns: 1fr 1fr; }
-  .mm-card:last-child { grid-column: 1 / -1; }
+  .multimedia-grid { grid-template-columns: 1fr; }
 
   .newsletter-inner { grid-template-columns: 1fr; gap: 28px; padding: 32px 28px; }
   .form-row         { flex-direction: column; }

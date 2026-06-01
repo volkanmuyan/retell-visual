@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <base href="/admin/">
   <title>Retell Media — Admin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +15,7 @@
   <!-- ── GİRİŞ EKRANI ─────────────────────────────────────── -->
   <div id="login-screen" class="login-screen">
     <div class="login-box">
-      <img src="../assets/logo-full.png" alt="Retell Media" class="login-logo">
+      <img src="/assets/logo-full.png" alt="Retell Media" class="login-logo">
       <h2>Admin Girişi</h2>
       <form id="login-form" novalidate>
         <div class="login-form-group">
@@ -37,8 +38,8 @@
   <!-- ── SIDEBAR ──────────────────────────────────────────── -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-top">
-      <a href="../index.html" class="sidebar-logo" target="_blank">
-        <img src="../assets/logo-full.png" alt="Retell Media" style="height:22px;width:auto;filter:invert(1);display:block;">
+      <a href="/index.html" class="sidebar-logo" target="_blank">
+        <img src="/assets/logo-full.png" alt="Retell Media" style="height:22px;width:auto;filter:invert(1);display:block;">
         <span class="admin-badge">admin</span>
       </a>
       <button class="sidebar-close" id="sidebar-close" aria-label="Menüyü kapat">
@@ -113,7 +114,7 @@
       </button>
       <h1 class="topbar-title" id="topbar-title">Dashboard</h1>
       <div class="topbar-actions">
-        <a href="../index.html" target="_blank" class="topbar-btn">
+        <a href="/index.html" target="_blank" class="topbar-btn">
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           Siteyi Gör
         </a>
@@ -663,7 +664,7 @@
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-  <script src="../firebase-config.js"></script>
+  <script src="/firebase-config.js"></script>
   <script src="admin.js"></script>
 </body>
 </html>

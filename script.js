@@ -143,37 +143,8 @@
     if (!published || !published.length) return;
     published.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
 
-    var heroTrack    = document.getElementById('hero-track');
-    var heroDotsWrap = document.getElementById('hero-dots');
-    if (heroTrack && heroDotsWrap) {
-      published.slice(0, 4).slice().reverse().forEach(function(art) {
-        var imgUrl = art.image || ('https://picsum.photos/seed/' + art.id + '/1400/800');
-        var imgBg  = "linear-gradient(to right,rgba(0,0,0,0) 40%,rgba(0,0,0,0.45) 100%), url('" + imgUrl + "') center/cover no-repeat";
-        var slide  = document.createElement('article');
-        slide.className = 'hero-slide';
-        slide.innerHTML =
-          '<div class="hero-bg" style="background:#0a0a0a;">' +
-            '<div class="hero-photo" style="background:' + imgBg + ';"></div>' +
-          '</div>' +
-          '<div class="hero-overlay"></div>' +
-          '<div class="container hero-content">' +
-            '<div class="cat-band"><span class="cat-main">' + escHtml(catTR[art.category] || art.category) + '</span>' +
-            (art.subcategory ? '<span class="cat-sub">' + escHtml(art.subcategory) + '</span>' : '') + '</div>' +
-            '<h1 class="hero-title">' + escHtml(art.title) + '</h1>' +
-            (art.subtitle ? '<p class="hero-sub">' + escHtml(art.subtitle) + '</p>' : '') +
-            '<div class="hero-meta"><span class="hero-author">' + escHtml(art.author) + '</span><span class="hero-date">' + fmtDate(art.date) + '</span></div>' +
-            '<a href="article-view.html?id=' + art.id + '" class="btn-primary">Devamını Oku</a>' +
-          '</div>';
-        heroTrack.insertBefore(slide, heroTrack.firstChild);
-        var dot = document.createElement('button');
-        dot.className = 'dot';
-        dot.setAttribute('role','tab');
-        dot.setAttribute('aria-selected','false');
-        dot.setAttribute('aria-label','Slayt');
-        heroDotsWrap.insertBefore(dot, heroDotsWrap.firstChild);
-      });
-    }
-
+    /* Firestore yazıları slider'a eklenmez (timing sorunu yaratır).
+       Sadece kategori bölümlerine enjekte edilir. */
     ['saha','cografya','kultur','multimedya'].forEach(function(cat) {
       var catArts = published.filter(function(a) { return a.category === cat; });
       if (!catArts.length) return;

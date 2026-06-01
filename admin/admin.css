@@ -1,6 +1,84 @@
 /* ============================================================
-   RETELL VISUAL — admin.css
+   RETELL MEDIA — admin.css
    ============================================================ */
+
+/* ── GİRİŞ EKRANI ──────────────────────────────────────────── */
+.login-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg, #0a0a0a);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-box {
+  background: var(--bg-card, #1c1c1c);
+  border: 1px solid var(--border, rgba(255,255,255,.08));
+  padding: 48px;
+  width: 100%;
+  max-width: 400px;
+}
+.login-logo {
+  height: 26px;
+  width: auto;
+  display: block;
+  margin-bottom: 36px;
+  filter: invert(1);
+}
+[data-theme="light"] .login-logo { filter: none; }
+.login-box h2 {
+  font-family: 'Sora', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+.login-form-group { margin-bottom: 16px; }
+.login-form-group label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted, #606060);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.login-form-group input {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--bg-2, #181818);
+  border: 1.5px solid var(--border, rgba(255,255,255,.08));
+  color: var(--text, #f0ede8);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color .2s;
+  border-radius: 0;
+}
+.login-form-group input:focus { border-color: var(--text-muted, #606060); }
+.login-submit-btn {
+  width: 100%;
+  padding: 13px;
+  background: #fff;
+  color: #000;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: opacity .2s;
+}
+[data-theme="light"] .login-submit-btn { background: #000; color: #fff; }
+.login-submit-btn:hover { opacity: .85; }
+.login-submit-btn:disabled { opacity: .4; cursor: not-allowed; }
+.login-error {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  color: #e53030;
+  text-align: center;
+  line-height: 1.5;
+}
 
 :root {
   --bg:        #0d0d0d;

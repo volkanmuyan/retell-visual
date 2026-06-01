@@ -1,29 +1,58 @@
 /* ============================================================
-   RETELL VISUAL — admin.js
-   LocalStorage-based CMS: articles · newsletter · subscribers
+   RETELL MEDIA — admin.js
+   Firebase Firestore CMS: articles · newsletter · subscribers
    ============================================================ */
 
 (function () {
   'use strict';
 
-  /* ── STORAGE HELPERS ──────────────────────────────────────── */
-  var KEYS = { articles: 'rv_articles', subs: 'rv_subs', newsletters: 'rv_newsletters', settings: 'rv_settings' };
-
-  function load(key) {
-    try { return JSON.parse(localStorage.getItem(key)) || []; } catch (e) { return []; }
-  }
-  function loadObj(key) {
-    try { return JSON.parse(localStorage.getItem(key)) || {}; } catch (e) { return {}; }
-  }
-  function save(key, data) { localStorage.setItem(key, JSON.stringify(data)); }
+  /* ── FIREBASE REFERENCES ──────────────────────────────────── */
+  /* db, auth, storage → firebase-config.js'ten geliyor */
 
   /* ── STATE ────────────────────────────────────────────────── */
-  var articles    = load(KEYS.articles);
-  var subs        = load(KEYS.subs);
-  var newsletters = load(KEYS.newsletters);
-  var settings    = loadObj(KEYS.settings);
-  var tags        = [];           // current article's tags
+  var articles    = [];
+  var subs        = [];
+  var newsletters = [];
+  var settings    = {};
+  var tags        = [];
   var editingId   = null;
+
+  /* ── FIRESTORE HELPERS ────────────────────────────────────── */
+  function loadAllData(callback) {
+    var done = 0;
+    function check() { done++; if (done === 3 && callback) callback(); }
+
+    db.collection('articles').orderBy('updatedAt', 'desc').get()
+      .then(function(snap) {
+        articles = [];
+        snap.forEach(function(doc) { articles.push(Object.assign({ id: doc.id }, doc.data())); });
+      })
+      .catch(function() {})
+      .finally(check);
+
+    db.collection('subscribers').orderBy('createdAt', 'desc').get()
+      .then(function(snap) {
+        subs = [];
+        snap.forEach(function(doc) { subs.push(Object.assign({ id: doc.id }, doc.data())); });
+      })
+      .catch(function() {})
+      .finally(check);
+
+    db.collection('newsletters').orderBy('sentAt', 'desc').get()
+      .then(function(snap) {
+        newsletters = [];
+        snap.forEach(function(doc) { newsletters.push(Object.assign({ id: doc.id }, doc.data())); });
+      })
+      .catch(function() {})
+      .finally(check);
+  }
+
+  function fsSet(collection, id, data) {
+    return db.collection(collection).doc(id).set(data);
+  }
+  function fsDelete(collection, id) {
+    return db.collection(collection).doc(id).delete();
+  }
 
   /* ── THEME ────────────────────────────────────────────────── */
   var html       = document.documentElement;
@@ -237,9 +266,18 @@
     imageFile.addEventListener('change', function () {
       var file = imageFile.files[0];
       if (!file) return;
-      var reader = new FileReader();
-      reader.onload = function (e) { showPreview(e.target.result); if (imageUrl) imageUrl.value = ''; };
-      reader.readAsDataURL(file);
+      /* Firebase Storage'a yükle, URL'yi al */
+      var filename = Date.now() + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
+      var ref = storage.ref('articles/' + filename);
+      toast('Görsel yükleniyor…', 'info');
+      ref.put(file)
+        .then(function() { return ref.getDownloadURL(); })
+        .then(function(url) {
+          showPreview(url);
+          if (imageUrl) imageUrl.value = url;
+          toast('Görsel yüklendi ✓', 'success');
+        })
+        .catch(function(err) { toast('Görsel yüklenemedi: ' + err.message, 'error'); });
     });
   }
   if (removeBtn) removeBtn.addEventListener('click', clearPreview);
@@ -330,14 +368,28 @@
     if (status) data.status = status;
     if (!data.slug) data.slug = slugify(data.title);
 
-    var idx = articles.findIndex(function (a) { return a.id === data.id; });
-    if (idx >= 0) { articles[idx] = data; } else { articles.unshift(data); }
-    save(KEYS.articles, articles);
-    updateCounts();
-    toast(data.status === 'published' ? 'Yazı yayınlandı! ✓' : 'Taslak kaydedildi ✓', 'success');
-    editingId = data.id;
-    var delBtn = document.getElementById('delete-btn'); if (delBtn) delBtn.classList.remove('hidden');
-    var editId = document.getElementById('edit-article-id'); if (editId) editId.value = data.id;
+    var btn = status === 'published'
+      ? document.getElementById('publish-btn')
+      : document.getElementById('save-draft-btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Kaydediliyor…'; }
+
+    fsSet('articles', data.id, data)
+      .then(function() {
+        var idx = articles.findIndex(function (a) { return a.id === data.id; });
+        if (idx >= 0) { articles[idx] = data; } else { articles.unshift(data); }
+        updateCounts();
+        toast(data.status === 'published' ? 'Yazı yayınlandı! ✓' : 'Taslak kaydedildi ✓', 'success');
+        editingId = data.id;
+        var delBtn = document.getElementById('delete-btn'); if (delBtn) delBtn.classList.remove('hidden');
+        var editId = document.getElementById('edit-article-id'); if (editId) editId.value = data.id;
+      })
+      .catch(function(err) { toast('Kaydedilemedi: ' + err.message, 'error'); })
+      .finally(function() {
+        if (btn) {
+          btn.disabled = false;
+          btn.textContent = status === 'published' ? 'Yayınla' : 'Taslak Kaydet';
+        }
+      });
   }
 
   function editArticle(id) {
@@ -372,12 +424,15 @@
 
   function deleteArticle(id) {
     confirm('Bu yazıyı silmek istediğinizden emin misiniz?', function () {
-      articles = articles.filter(function (a) { return a.id !== id; });
-      save(KEYS.articles, articles);
-      updateCounts();
-      toast('Yazı silindi', 'info');
-      renderArticleList();
-      showView('articles');
+      fsDelete('articles', id)
+        .then(function() {
+          articles = articles.filter(function (a) { return a.id !== id; });
+          updateCounts();
+          toast('Yazı silindi', 'info');
+          renderArticleList();
+          showView('articles');
+        })
+        .catch(function(err) { toast('Silinemedi: ' + err.message, 'error'); });
     });
   }
 
@@ -526,11 +581,14 @@
           recipientCount: activeSubs.length,
           template: document.querySelector('input[name="nl-template"]:checked') ? document.querySelector('input[name="nl-template"]:checked').value : 'weekly'
         };
-        newsletters.push(record);
-        save(KEYS.newsletters, newsletters);
-        updateCounts();
-        renderNLHistory();
-        toast('Bülten gönderildi! (' + activeSubs.length + ' abone) ✓', 'success');
+        fsSet('newsletters', record.id, record)
+          .then(function() {
+            newsletters.unshift(record);
+            updateCounts();
+            renderNLHistory();
+            toast('Bülten gönderildi! (' + activeSubs.length + ' abone) ✓', 'success');
+          })
+          .catch(function(err) { toast('Bülten kaydedilemedi: ' + err.message, 'error'); });
         /* Reset form */
         ['nl-subject','nl-preheader','nl-body'].forEach(function (id) { var el = document.getElementById(id); if (el) el.value = ''; });
       });
@@ -598,11 +656,14 @@
     tbody.querySelectorAll('.remove-sub-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {
         confirm('Bu aboneyi silmek istediğinizden emin misiniz?', function () {
-          subs = subs.filter(function (s) { return s.id !== btn.dataset.id; });
-          save(KEYS.subs, subs);
-          updateCounts();
-          renderSubscribers();
-          toast('Abone silindi', 'info');
+          fsDelete('subscribers', btn.dataset.id)
+            .then(function() {
+              subs = subs.filter(function (s) { return s.id !== btn.dataset.id; });
+              updateCounts();
+              renderSubscribers();
+              toast('Abone silindi', 'info');
+            })
+            .catch(function(err) { toast('Silinemedi: ' + err.message, 'error'); });
         });
       });
     });
@@ -622,14 +683,18 @@
       var email   = emailEl ? emailEl.value.trim() : '';
       if (!email || !email.includes('@')) { toast('Geçerli bir e-posta girin', 'error'); return; }
       if (subs.find(function (s) { return s.email === email; })) { toast('Bu e-posta zaten kayıtlı', 'error'); return; }
-      subs.push({ id: uid(), email: email, name: nameEl ? nameEl.value.trim() : '', status: 'active', createdAt: new Date().toISOString() });
-      save(KEYS.subs, subs);
-      updateCounts();
-      renderSubscribers();
-      if (emailEl) emailEl.value = '';
-      if (nameEl)  nameEl.value  = '';
-      if (addSubForm) addSubForm.classList.add('hidden');
-      toast('Abone eklendi ✓', 'success');
+      var newSub = { id: uid(), email: email, name: nameEl ? nameEl.value.trim() : '', status: 'active', createdAt: new Date().toISOString() };
+      fsSet('subscribers', newSub.id, newSub)
+        .then(function() {
+          subs.unshift(newSub);
+          updateCounts();
+          renderSubscribers();
+          if (emailEl) emailEl.value = '';
+          if (nameEl)  nameEl.value  = '';
+          if (addSubForm) addSubForm.classList.add('hidden');
+          toast('Abone eklendi ✓', 'success');
+        })
+        .catch(function(err) { toast('Eklenemedi: ' + err.message, 'error'); });
     });
   }
 
@@ -674,8 +739,9 @@
       Object.keys(map).forEach(function (id) {
         var el = document.getElementById(id); if (el) settings[map[id]] = el.value;
       });
-      save(KEYS.settings, settings);
-      toast('Ayarlar kaydedildi ✓', 'success');
+      fsSet('config', 'settings', settings)
+        .then(function() { toast('Ayarlar kaydedildi ✓', 'success'); })
+        .catch(function(err) { toast('Kaydedilemedi: ' + err.message, 'error'); });
     });
   }
 
@@ -700,12 +766,20 @@
       reader.onload = function (e) {
         try {
           var data = JSON.parse(e.target.result);
-          if (data.articles) { articles = data.articles; save(KEYS.articles, articles); }
-          if (data.subs)     { subs     = data.subs;     save(KEYS.subs, subs); }
-          if (data.newsletters) { newsletters = data.newsletters; save(KEYS.newsletters, newsletters); }
-          if (data.settings)    { settings    = data.settings;    save(KEYS.settings, settings); }
-          updateCounts();
-          toast('Veri içe aktarıldı ✓', 'success');
+          var batch = db.batch();
+          if (data.articles) {
+            data.articles.forEach(function(a) {
+              batch.set(db.collection('articles').doc(a.id), a);
+            });
+          }
+          if (data.subs) {
+            data.subs.forEach(function(s) {
+              batch.set(db.collection('subscribers').doc(s.id), s);
+            });
+          }
+          batch.commit()
+            .then(function() { loadAllData(function() { updateCounts(); toast('Veri içe aktarıldı ✓', 'success'); }); })
+            .catch(function(err) { toast('İçe aktarma hatası: ' + err.message, 'error'); });
         } catch (err) { toast('Geçersiz JSON dosyası', 'error'); }
       };
       reader.readAsText(file);
@@ -713,11 +787,18 @@
   }
   if (resetDataBtn) {
     resetDataBtn.addEventListener('click', function () {
-      confirm('TÜM veriler silinecek (yazılar, aboneler, bültenler). Bu işlem geri alınamaz!', function () {
-        articles = []; subs = []; newsletters = [];
-        [KEYS.articles, KEYS.subs, KEYS.newsletters].forEach(function (k) { localStorage.removeItem(k); });
-        updateCounts();
-        toast('Tüm veri silindi', 'info');
+      confirm('TÜM veriler Firestore\'dan silinecek. Bu işlem geri alınamaz!', function () {
+        var batch = db.batch();
+        articles.forEach(function(a)    { batch.delete(db.collection('articles').doc(a.id)); });
+        subs.forEach(function(s)        { batch.delete(db.collection('subscribers').doc(s.id)); });
+        newsletters.forEach(function(n) { batch.delete(db.collection('newsletters').doc(n.id)); });
+        batch.commit()
+          .then(function() {
+            articles = []; subs = []; newsletters = [];
+            updateCounts();
+            toast('Tüm veri silindi', 'info');
+          })
+          .catch(function(err) { toast('Silinemedi: ' + err.message, 'error'); });
       });
     });
   }
@@ -732,17 +813,54 @@
     a.download = name; a.click(); URL.revokeObjectURL(a.href);
   }
 
-  /* ── SEED DEMO SUBSCRIBERS ────────────────────────────────── */
-  if (!subs.length) {
-    subs = [
-      { id: uid(), email: 'editor@retellvisual.com', name: 'Editör', status: 'active', createdAt: new Date().toISOString() },
-      { id: uid(), email: 'demo@example.com', name: 'Demo Kullanıcı', status: 'active', createdAt: new Date().toISOString() }
-    ];
-    save(KEYS.subs, subs);
+  /* ── AUTH: GİRİŞ FORMU ───────────────────────────────────── */
+  var loginScreen  = document.getElementById('login-screen');
+  var adminWrapper = document.getElementById('admin-wrapper');
+  var loginForm    = document.getElementById('login-form');
+  var loginError   = document.getElementById('login-error');
+  var logoutBtn    = document.getElementById('logout-btn');
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var email    = (document.getElementById('login-email')    || {}).value || '';
+      var password = (document.getElementById('login-password') || {}).value || '';
+      var btn = loginForm.querySelector('.login-submit-btn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Giriş yapılıyor…'; }
+      if (loginError) loginError.style.display = 'none';
+
+      auth.signInWithEmailAndPassword(email, password)
+        .catch(function(err) {
+          if (loginError) {
+            loginError.textContent = 'Giriş başarısız. E-posta veya şifrenizi kontrol edin.';
+            loginError.style.display = 'block';
+          }
+          if (btn) { btn.disabled = false; btn.textContent = 'Giriş Yap'; }
+        });
+    });
   }
 
-  /* ── INIT ─────────────────────────────────────────────────── */
-  updateCounts();
-  showView('dashboard');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function() {
+      auth.signOut();
+    });
+  }
+
+  /* ── AUTH STATE OBSERVER ─────────────────────────────────── */
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      /* Giriş başarılı — paneli göster, veriyi yükle */
+      if (loginScreen)  loginScreen.style.display  = 'none';
+      if (adminWrapper) adminWrapper.style.display  = 'contents';
+      loadAllData(function() {
+        updateCounts();
+        showView('dashboard');
+      });
+    } else {
+      /* Oturum yok — giriş ekranını göster */
+      if (loginScreen)  loginScreen.style.display  = 'flex';
+      if (adminWrapper) adminWrapper.style.display  = 'none';
+    }
+  });
 
 })();

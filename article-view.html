@@ -179,10 +179,14 @@
     </div>
   </footer>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
   <script src="script.js"></script>
   <script src="article.js"></script>
   <script>
-  /* ── ARTICLE VIEW — localStorage renderer ─────────────────── */
+  /* ── ARTICLE VIEW — Firestore renderer ─────────────────────── */
   (function () {
     var catTR = { saha:'Saha', cografya:'Coğrafya', kultur:'Kültür', multimedya:'Multimedya' };
     var catAnchor = { saha:'#saha', cografya:'#cografya', kultur:'#kultur', multimedya:'#multimedya' };
@@ -199,18 +203,14 @@
     }
 
     var id = getParam('id');
-    var art = null;
-    if (id) {
-      try {
-        var all = JSON.parse(localStorage.getItem('rv_articles')) || [];
-        art = all.find(function(a) { return a.id === id; });
-      } catch(e) {}
-    }
+    if (!id) { document.getElementById('av-not-found').style.display = 'block'; return; }
 
-    if (!art) {
-      document.getElementById('av-not-found').style.display = 'block';
-      return;
-    }
+    /* Firestore'dan makaleyi çek */
+    function renderArticle(art) {
+      if (!art) {
+        document.getElementById('av-not-found').style.display = 'block';
+        return;
+      }
 
     /* Page title */
     document.title = art.title + ' — Retell Media';
@@ -311,6 +311,25 @@
         });
       });
     }
+    } /* renderArticle end */
+
+    /* Firestore'dan makaleyi çek */
+    try {
+      db.collection('articles').doc(id).get()
+        .then(function(docSnap) {
+          if (docSnap.exists) {
+            renderArticle(Object.assign({ id: docSnap.id }, docSnap.data()));
+          } else {
+            document.getElementById('av-not-found').style.display = 'block';
+          }
+        })
+        .catch(function() {
+          document.getElementById('av-not-found').style.display = 'block';
+        });
+    } catch(e) {
+      document.getElementById('av-not-found').style.display = 'block';
+    }
+
   })();
   </script>
 </body>

@@ -133,26 +133,20 @@
     return isNaN(d) ? iso : d.toLocaleDateString('tr-TR', { day:'numeric', month:'long', year:'numeric' });
   }
 
-  /* ── ADMIN CONTENT INJECTION ─────────────────────────────── */
-  /* Reads rv_articles from localStorage and injects published
-     articles into hero slider and category sections BEFORE
-     slider init so the total slide count is picked up correctly. */
-  (function injectAdminContent() {
-    var stored;
-    try { stored = JSON.parse(localStorage.getItem('rv_articles')) || []; } catch(e) { return; }
-    var published = stored.filter(function(a) { return a.status === 'published'; });
-    if (!published.length) return;
+  /* ── ADMIN CONTENT INJECTION (Firestore) ────────────────────
+     Firestore'dan yayınlanan yazıları çeker, slider ve
+     kategori bölümlerine enjekte eder.
+  ──────────────────────────────────────────────────────────── */
+  var catTR = { saha:'Saha', cografya:'Coğrafya', kultur:'Kültür', multimedya:'Multimedya' };
 
+  function buildAndInject(published) {
+    if (!published || !published.length) return;
     published.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
 
-    var catTR = { saha:'Saha', cografya:'Coğrafya', kultur:'Kültür', multimedya:'Multimedya' };
-
-    /* --- Hero slider --- */
     var heroTrack    = document.getElementById('hero-track');
     var heroDotsWrap = document.getElementById('hero-dots');
     if (heroTrack && heroDotsWrap) {
-      var heroArts = published.slice(0, 4); // max 4 yeni slayt
-      heroArts.slice().reverse().forEach(function(art) {
+      published.slice(0, 4).slice().reverse().forEach(function(art) {
         var imgUrl = art.image || ('https://picsum.photos/seed/' + art.id + '/1400/800');
         var imgBg  = "linear-gradient(to right,rgba(0,0,0,0) 40%,rgba(0,0,0,0.45) 100%), url('" + imgUrl + "') center/cover no-repeat";
         var slide  = document.createElement('article');
@@ -163,62 +157,65 @@
           '</div>' +
           '<div class="hero-overlay"></div>' +
           '<div class="container hero-content">' +
-            '<div class="cat-band">' +
-              '<span class="cat-main">' + escHtml(catTR[art.category] || art.category) + '</span>' +
-              (art.subcategory ? '<span class="cat-sub">' + escHtml(art.subcategory) + '</span>' : '') +
-            '</div>' +
+            '<div class="cat-band"><span class="cat-main">' + escHtml(catTR[art.category] || art.category) + '</span>' +
+            (art.subcategory ? '<span class="cat-sub">' + escHtml(art.subcategory) + '</span>' : '') + '</div>' +
             '<h1 class="hero-title">' + escHtml(art.title) + '</h1>' +
             (art.subtitle ? '<p class="hero-sub">' + escHtml(art.subtitle) + '</p>' : '') +
-            '<div class="hero-meta">' +
-              '<span class="hero-author">' + escHtml(art.author) + '</span>' +
-              '<span class="hero-date">' + fmtDate(art.date) + '</span>' +
-            '</div>' +
+            '<div class="hero-meta"><span class="hero-author">' + escHtml(art.author) + '</span><span class="hero-date">' + fmtDate(art.date) + '</span></div>' +
             '<a href="article-view.html?id=' + art.id + '" class="btn-primary">Devamını Oku</a>' +
           '</div>';
-        /* Prepend: admin articles appear first */
         heroTrack.insertBefore(slide, heroTrack.firstChild);
-
         var dot = document.createElement('button');
         dot.className = 'dot';
-        dot.setAttribute('role', 'tab');
-        dot.setAttribute('aria-selected', 'false');
-        dot.setAttribute('aria-label', 'Admin slayt');
+        dot.setAttribute('role','tab');
+        dot.setAttribute('aria-selected','false');
+        dot.setAttribute('aria-label','Slayt');
         heroDotsWrap.insertBefore(dot, heroDotsWrap.firstChild);
       });
     }
 
-    /* --- Category sections --- */
-    var sectionIds = { saha:'saha', cografya:'cografya', kultur:'kultur', multimedya:'multimedya' };
-    Object.keys(sectionIds).forEach(function(cat) {
+    ['saha','cografya','kultur','multimedya'].forEach(function(cat) {
       var catArts = published.filter(function(a) { return a.category === cat; });
       if (!catArts.length) return;
-      var section = document.getElementById(sectionIds[cat]);
+      var section = document.getElementById(cat);
       if (!section) return;
       var feed = section.querySelector('.category-feed');
       if (!feed) return;
-
-      var adminRow = document.createElement('div');
-      adminRow.className = 'admin-feed';
+      var adminFeed = document.createElement('div');
+      adminFeed.className = 'admin-feed';
       catArts.slice(0, 4).forEach(function(art) {
         var img = art.image || ('https://picsum.photos/seed/' + art.id + '/800/600');
         var a   = document.createElement('a');
-        a.href      = 'article-view.html?id=' + art.id;
+        a.href  = 'article-view.html?id=' + art.id;
         a.className = 'card-overlay';
         a.innerHTML =
           '<img class="card-overlay-img" src="' + escHtml(img) + '" alt="" loading="lazy">' +
           '<div class="card-overlay-body">' +
-            '<div class="cat-band">' +
-              '<span class="cat-main">' + escHtml(catTR[cat] || cat) + '</span>' +
-              (art.subcategory ? '<span class="cat-sub">' + escHtml(art.subcategory) + '</span>' : '') +
-            '</div>' +
+            '<div class="cat-band"><span class="cat-main">' + escHtml(catTR[cat]) + '</span>' +
+            (art.subcategory ? '<span class="cat-sub">' + escHtml(art.subcategory) + '</span>' : '') + '</div>' +
             '<h3 class="ov-title">' + escHtml(art.title) + '</h3>' +
             '<div class="ov-meta"><span>' + escHtml(art.author) + '</span><span>' + fmtDate(art.date) + '</span></div>' +
           '</div>';
-        adminRow.appendChild(a);
+        adminFeed.appendChild(a);
       });
-      feed.insertBefore(adminRow, feed.firstChild);
+      feed.insertBefore(adminFeed, feed.firstChild);
     });
-  })();
+  }
+
+  /* Firestore sorgusu */
+  try {
+    db.collection('articles')
+      .where('status', '==', 'published')
+      .orderBy('date', 'desc')
+      .limit(12)
+      .get()
+      .then(function(snapshot) {
+        var arts = [];
+        snapshot.forEach(function(doc) { arts.push(Object.assign({ id: doc.id }, doc.data())); });
+        buildAndInject(arts);
+      })
+      .catch(function() {});
+  } catch(e) {}
 
   /* ── HERO SLIDER ────────────────────────────────────────── */
   var track       = document.getElementById('hero-track');

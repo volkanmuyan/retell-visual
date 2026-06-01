@@ -20,6 +20,6 @@ var auth = firebase.auth();
 /* cloudinary.com → ücretsiz kayıt → Settings → Upload →
    Upload Presets → Add (Unsigned) → cloud name ve preset adını girin */
 var cloudinaryConfig = {
-  cloudName:    "BURAYA_CLOUD_NAME",
-  uploadPreset: "BURAYA_UPLOAD_PRESET"
+  cloudName:    "duqef1qmp",
+  uploadPreset: "retell-unsigned"
 };

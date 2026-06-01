@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retell Media — Veri Migrasyonu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Sora', sans-serif; background: #fafaf9; color: #111; padding: 48px 24px; }
+    .wrap { max-width: 720px; margin: 0 auto; }
+    h1 { font-size: 1.6rem; font-weight: 800; margin-bottom: 8px; }
+    .subtitle { color: #666; margin-bottom: 32px; line-height: 1.6; }
+    .warning { background: #fff3cd; border-left: 4px solid #f59e0b; padding: 14px 18px; margin-bottom: 28px; font-size: .9rem; line-height: 1.6; }
+    #login-box { background: #fff; border: 1px solid #e5e5e5; padding: 32px; margin-bottom: 28px; }
+    #login-box h2 { font-size: 1rem; margin-bottom: 16px; }
+    .field { margin-bottom: 14px; }
+    .field label { display: block; font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #666; margin-bottom: 6px; }
+    .field input { width: 100%; padding: 10px 12px; border: 1.5px solid #e5e5e5; font: inherit; font-size: .9rem; }
+    .btn { padding: 12px 28px; background: #000; color: #fff; font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer; border: none; margin-top: 8px; }
+    .btn:disabled { opacity: .4; cursor: not-allowed; }
+    .btn-outline { background: #fff; color: #000; border: 1.5px solid #000; }
+    #log { background: #111; color: #a3e635; font-family: monospace; font-size: .82rem; padding: 20px; line-height: 1.8; max-height: 400px; overflow-y: auto; display: none; margin-top: 20px; }
+    .ok  { color: #a3e635; }
+    .err { color: #f87171; }
+    .inf { color: #94a3b8; }
+    #status { margin-top: 20px; font-weight: 700; }
+    .done { color: #16a34a; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Retell Media — Veri Migrasyonu</h1>
+  <p class="subtitle">Mevcut statik HTML yazılarını Firestore veritabanına aktarır.<br>Bu sayfayı <strong>yalnızca bir kez</strong> çalıştırın.</p>
+
+  <div class="warning">
+    ⚠️ Bu işlem geri alınamaz. Mevcut Firestore'da aynı slug'a sahip yazılar üzerine yazılır.
+    Admin paneline giriş yapmış olduğunuzdan emin olun.
+  </div>
+
+  <!-- Giriş kutusu -->
+  <div id="login-box">
+    <h2>Admin Girişi</h2>
+    <div class="field"><label>E-posta</label><input type="email" id="em" placeholder="admin@retellmedia.com"></div>
+    <div class="field"><label>Şifre</label><input type="password" id="pw" placeholder="••••••••"></div>
+    <button class="btn" id="login-btn">Giriş Yap</button>
+    <p id="login-err" style="color:#e53030;margin-top:10px;font-size:.85rem"></p>
+  </div>
+
+  <div id="migrate-box" style="display:none">
+    <p style="margin-bottom:16px;color:#444;">Giriş yapıldı. Aşağıdaki butona basarak tüm yazıları Firestore'a aktarın.</p>
+    <button class="btn" id="migrate-btn">Migrasyonu Başlat (21 yazı)</button>
+    <button class="btn btn-outline" id="logout-btn" style="margin-left:10px">Çıkış</button>
+    <div id="log"></div>
+    <p id="status"></p>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script>
+(function() {
+  var logEl    = document.getElementById('log');
+  var statusEl = document.getElementById('status');
+
+  function log(msg, type) {
+    logEl.style.display = 'block';
+    var line = document.createElement('div');
+    line.className = type || 'inf';
+    line.textContent = msg;
+    logEl.appendChild(line);
+    logEl.scrollTop = logEl.scrollHeight;
+  }
+
+  /* ── AUTH ─────────────────────────────────────────────── */
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      document.getElementById('login-box').style.display  = 'none';
+      document.getElementById('migrate-box').style.display = 'block';
+    } else {
+      document.getElementById('login-box').style.display  = 'block';
+      document.getElementById('migrate-box').style.display = 'none';
+    }
+  });
+
+  document.getElementById('login-btn').addEventListener('click', function() {
+    var em = document.getElementById('em').value;
+    var pw = document.getElementById('pw').value;
+    document.getElementById('login-err').textContent = '';
+    auth.signInWithEmailAndPassword(em, pw)
+      .catch(function(e) { document.getElementById('login-err').textContent = e.message; });
+  });
+
+  document.getElementById('logout-btn').addEventListener('click', function() { auth.signOut(); });
+
+  /* ── ARTICLES DATA ────────────────────────────────────── */
+  var now = new Date().toISOString();
+
+  /* Basit slug üretici */
+  function slug(s) {
+    return s.toLowerCase()
+      .replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s')
+      .replace(/ı/g,'i').replace(/ö/g,'o').replace(/ç/g,'c')
+      .replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  }
+
+  /* Placeholder görsel URL'leri */
+  var pics = {
+    saha1:  'https://picsum.photos/seed/saha1/800/600',
+    saha4:  'https://picsum.photos/seed/saha4/800/600',
+    saha5:  'https://picsum.photos/seed/saha5/800/600',
+    cog1:   'https://picsum.photos/seed/cog1/800/600',
+    cog2:   'https://picsum.photos/seed/cog2/800/600',
+    cog3:   'https://picsum.photos/seed/cog3/800/600',
+    cog4:   'https://picsum.photos/seed/cog4/800/600',
+    cog5:   'https://picsum.photos/seed/cog5/800/600',
+    kul1:   'https://picsum.photos/seed/kul1/800/600',
+    kul2:   'https://picsum.photos/seed/kul2/800/600',
+    kul3:   'https://picsum.photos/seed/kul3/800/600',
+    kul4:   'https://picsum.photos/seed/kul4/800/600',
+    kul5:   'https://picsum.photos/seed/kul5/800/600',
+    feat1:  'https://picsum.photos/seed/featured1/800/600',
+    feat2:  'https://picsum.photos/seed/featured2/800/600',
+    feat3:  'https://picsum.photos/seed/featured3/800/600',
+    feat4:  'https://picsum.photos/seed/featured4/800/600',
+    art:    'https://picsum.photos/seed/article-hero/800/600',
+  };
+
+  /* Tüm yazıların meta verisi */
+  var articles = [
+    /* ── GERÇEK İÇERİKLİ YAZILLAR (HTML'den çekilecek) ── */
+    {
+      id: 'ezidi-soykırımı',
+      title: 'Êzidî Soykırımı: Adalet hâlâ gelmedi',
+      subtitle: 'IŞİD\'in 3 Ağustos 2014\'te Şengal\'e yönelik saldırısının 12. yılında adalet arayışı nerede duruyor? Prof. Dr. Jan İlhan Kızılhan ile hesap verebilirlik, travma ve inkâr üzerine.',
+      author: 'Retell Media', authorRole: 'Araştırma Dosyası',
+      category: 'saha', subcategory: 'dosya',
+      date: '2026-06-01', readtime: '18',
+      image: '/assets/ezidi-kapak.jpg',
+      authorImg: '/assets/jan-ilhan-kizilhan.jpg',
+      tags: ['Êzidî','Soykırım','IŞİD','Uluslararası Hukuk','UNITAD'],
+      fetchFrom: '/dosya-soylesi.html'
+    },
+    {
+      id: 'haci-cevik-demokrasi',
+      title: '"Demokrasinin sınırları sağa doğru kayıyor"',
+      subtitle: 'Avrupa\'da güç kazanan sağ popülist hareketler krizleri araçsallaştırıyor, göçmenleri hedef alıyor ve dijital algoritmalar aracılığıyla hegemonya inşa ediyor.',
+      author: 'Adem Özgür', authorRole: 'Söyleşi',
+      category: 'saha', subcategory: 'odak',
+      date: '2026-06-01', readtime: '14',
+      image: '/assets/haci-cevik-kapak.jpg',
+      tags: ['Aşırı Sağ','Avrupa Siyaseti','Göç','Demokrasi','Söyleşi'],
+      fetchFrom: '/odak-soylesi.html'
+    },
+    {
+      id: 'muzakere-masasi',
+      title: 'Müzakere Masasının Gölgesinde: Barış Sürecinin İç Yüzü',
+      subtitle: 'On yıllık aradan sonra yeniden başlayan müzakerelerde neler değişti, neler aynı kaldı? Sahadan kapsamlı bir değerlendirme.',
+      author: 'Cihan Uzunçarşılı Baysal', authorRole: 'Araştırmacı Gazeteci',
+      category: 'saha', subcategory: 'dosya',
+      date: '2026-04-07', readtime: '12',
+      image: pics.art, authorImg: 'https://picsum.photos/seed/author1/80/80',
+      tags: ['Barış Süreci','Kürt Siyaseti','Dosya'],
+      fetchFrom: '/article.html'
+    },
+
+    /* ── PLACEHOLDER YAZILLAR ─────────────────────────── */
+    {
+      id: 'pkk-ateskes-anatomisi',
+      title: 'PKK Ateşkesinin Anatomisi: Kim Ne İstiyor?',
+      author: 'Mahmut Bozarslan', category: 'saha', subcategory: 'araştırma',
+      date: '2026-04-06', image: pics.saha1, tags: ['PKK','Ateşkes','Barış']
+    },
+    {
+      id: 'siyasi-tutukluluk',
+      title: 'Siyasi Tutukluluğun Belgeleri: 2015-2025',
+      author: 'Felat Bozarslan', category: 'saha', subcategory: 'dosya',
+      date: '2026-04-03', image: pics.saha4, tags: ['Siyasi Tutukluluk','Belgeler']
+    },
+    {
+      id: 'silah-birakma',
+      title: 'Silah Bırakmanın Bedeli: Tarihsel Karşılaştırma',
+      author: 'Güneş Murat Tezcür', category: 'saha', subcategory: 'araştırma',
+      date: '2026-03-28', image: pics.saha5, tags: ['Silahsızlanma','Tarih']
+    },
+    {
+      id: 'baris-muzakerelerinde-yeni-aktorler',
+      title: 'Barış Müzakerelerinde Yeni Aktörler',
+      author: 'Ayşe Günaysu', category: 'saha', subcategory: 'dosya',
+      date: '2026-03-25', image: pics.feat1, tags: ['Barış','Müzakere']
+    },
+    {
+      id: 'kobani-on-yil',
+      title: 'Kobani\'nin On Yılı: Kuşatmadan Özerkliğe',
+      author: 'Ruken Çelik', category: 'saha', subcategory: 'araştırma',
+      date: '2026-04-04', image: pics.feat2, tags: ['Kobani','Kürdistan']
+    },
+    {
+      id: 'diyarbakir-surici',
+      title: 'Diyarbakır Suriçi\'nin Silinmeye Yüz Tutan Anıları',
+      author: 'Zeynep Aslan', category: 'cografya', subcategory: 'hafıza',
+      date: '2026-04-05', image: pics.cog1, tags: ['Diyarbakır','Sur','Hafıza']
+    },
+    {
+      id: 'suriyeli-multeciler',
+      title: 'Suriyeli Mülteciler: 13. Yıl, Yeni Belirsizlikler',
+      author: 'Berivan Doğan', category: 'cografya', subcategory: 'göç',
+      date: '2026-04-02', image: pics.cog2, tags: ['Suriye','Göç','Mülteci']
+    },
+    {
+      id: 'leyla-guven',
+      title: 'Leyla Güven: Açlık Grevinden Siyasi Sahneye',
+      author: 'Hêvî Çeto', category: 'cografya', subcategory: 'portre',
+      date: '2026-04-02', image: pics.feat3, tags: ['Leyla Güven','Portre']
+    },
+    {
+      id: 'ocalan-surec',
+      title: 'Abdullah Öcalan: Bir Sürecin Sembolü mü, Aktörü mü?',
+      author: 'Hêvî Çeto', category: 'cografya', subcategory: 'portre',
+      date: '2026-03-29', image: pics.cog3, tags: ['Öcalan','Barış Süreci']
+    },
+    {
+      id: 'mardin-sehir',
+      title: 'Mardin: Çok Katmanlı Bir Şehrin Portresi',
+      author: 'Seyfo Erhan', category: 'cografya', subcategory: 'şehir',
+      date: '2026-03-26', image: pics.cog4, tags: ['Mardin','Şehir']
+    },
+    {
+      id: 'amed-cehre',
+      title: 'Amed\'in Çehresini Değiştiren On Yıl',
+      author: 'Nidal Baydaş', category: 'cografya', subcategory: 'şehir',
+      date: '2026-03-30', image: pics.feat4, tags: ['Diyarbakır','Kentsel Dönüşüm']
+    },
+    {
+      id: 'halabja-travma',
+      title: 'Halabja\'yı Unutmamak: Kolektif Travmanın Siyaseti',
+      author: 'Alan Semo', category: 'cografya', subcategory: 'hafıza',
+      date: '2026-03-16', image: pics.cog5, tags: ['Halabja','Travma','Hafıza']
+    },
+    {
+      id: 'kurt-sineması',
+      title: 'Yılmaz Güney Sonrası Kürt Sineması',
+      author: 'Narin Yıldız', category: 'kultur', subcategory: 'sinema',
+      date: '2026-04-04', image: pics.kul1, tags: ['Kürt Sineması','Yılmaz Güney']
+    },
+    {
+      id: 'kurtce-edebiyat',
+      title: 'Kürtçe Edebiyatın Yeni Sesleri',
+      author: 'Arjîn Ararat', category: 'kultur', subcategory: 'kitap',
+      date: '2026-04-01', image: pics.kul2, tags: ['Kürtçe','Edebiyat']
+    },
+    {
+      id: 'kurt-muzigi-donusum',
+      title: 'Dağ Türkülerinden Hip-Hop\'a: Kürt Müziğinin Dönüşümü',
+      author: 'Xêzan Dağ', category: 'kultur', subcategory: 'müzik',
+      date: '2026-03-28', image: pics.kul3, tags: ['Kürt Müziği','Hip-Hop']
+    },
+    {
+      id: 'bakur-belgeseli',
+      title: '\'Bakur\' Belgeseli Neden Hâlâ Yasaklı?',
+      author: 'Narin Yıldız', category: 'kultur', subcategory: 'sinema',
+      date: '2026-03-24', image: pics.kul4, tags: ['Bakur','Belgesel','Sansür']
+    },
+    {
+      id: 'dengbejler',
+      title: 'Dengbêjlerin Unutulan Şarkıları',
+      author: 'Xêzan Dağ', category: 'kultur', subcategory: 'müzik',
+      date: '2026-03-19', image: pics.kul5, tags: ['Dengbêj','Kürt Müziği']
+    },
+  ];
+
+  /* ── MİGRASYON MANTIĞI ─────────────────────────────── */
+  async function fetchContent(url) {
+    try {
+      var resp = await fetch(url);
+      var html = await resp.text();
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+      var el = doc.querySelector('#article-content') || doc.querySelector('.article-content');
+      return el ? el.innerHTML.trim() : '';
+    } catch(e) {
+      return '';
+    }
+  }
+
+  document.getElementById('migrate-btn').addEventListener('click', async function() {
+    var btn = this;
+    btn.disabled = true;
+    btn.textContent = 'Aktarılıyor…';
+    log('Migrasyon başladı — ' + articles.length + ' yazı', 'inf');
+
+    var ok = 0, err = 0;
+
+    for (var i = 0; i < articles.length; i++) {
+      var art = articles[i];
+      var docId = art.id;
+
+      try {
+        var content = '';
+
+        if (art.fetchFrom) {
+          log('  ↻ İçerik çekiliyor: ' + art.fetchFrom, 'inf');
+          content = await fetchContent(art.fetchFrom);
+          log('  ' + (content ? '✓ İçerik alındı (' + content.length + ' karakter)' : '⚠ İçerik boş'), content ? 'ok' : 'err');
+        }
+
+        var record = {
+          id:          docId,
+          title:       art.title        || '',
+          subtitle:    art.subtitle     || '',
+          content:     content,
+          image:       art.image        || '',
+          author:      art.author       || '',
+          authorRole:  art.authorRole   || '',
+          authorImg:   art.authorImg    || '',
+          category:    art.category     || '',
+          subcategory: art.subcategory  || '',
+          tags:        art.tags         || [],
+          status:      'published',
+          date:        art.date         || new Date().toISOString().slice(0,10),
+          slug:        docId,
+          lang:        'tr',
+          readtime:    art.readtime     || '',
+          updatedAt:   now
+        };
+
+        await db.collection('articles').doc(docId).set(record);
+        log('✓ ' + art.title, 'ok');
+        ok++;
+      } catch(e) {
+        log('✗ ' + art.title + ' — ' + e.message, 'err');
+        err++;
+      }
+    }
+
+    statusEl.className = err === 0 ? 'done' : '';
+    statusEl.textContent = '✓ Tamamlandı: ' + ok + ' yazı aktarıldı' + (err ? ', ' + err + ' hata' : '') + '.';
+    btn.textContent = 'Tamamlandı';
+  });
+})();
+</script>
+</body>
+</html>

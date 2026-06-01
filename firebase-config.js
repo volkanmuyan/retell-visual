@@ -1,20 +1,14 @@
 /* ============================================================
    RETELL MEDIA — firebase-config.js
-
-   1) Firebase Console → Proje Ayarları → Uygulamalarınız
-      bölümünden kopyalayıp yapıştırın.
-   2) Cloudinary: cloudinary.com → ücretsiz kayıt → Settings →
-      Upload → Upload Presets → Add (Unsigned) → Cloud Name ve
-      Preset Name değerlerini aşağıya girin.
    ============================================================ */
 
 /* ── Firebase ──────────────────────────────────────────────── */
 var firebaseConfig = {
-  apiKey:            "BURAYA_API_KEY",
-  authDomain:        "BURAYA_PROJECT_ID.firebaseapp.com",
-  projectId:         "BURAYA_PROJECT_ID",
-  messagingSenderId: "BURAYA_SENDER_ID",
-  appId:             "BURAYA_APP_ID"
+  apiKey:            "AIzaSyBP56_ntBf3vl9ycWwFON1sBeQoZLMO4vI",
+  authDomain:        "retell-media.firebaseapp.com",
+  projectId:         "retell-media",
+  messagingSenderId: "737289608100",
+  appId:             "1:737289608100:web:6746601bcabb8b7f81bf31"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -23,7 +17,9 @@ var db   = firebase.firestore();
 var auth = firebase.auth();
 
 /* ── Cloudinary (ücretsiz görsel yükleme) ──────────────────── */
+/* cloudinary.com → ücretsiz kayıt → Settings → Upload →
+   Upload Presets → Add (Unsigned) → cloud name ve preset adını girin */
 var cloudinaryConfig = {
-  cloudName:    "BURAYA_CLOUD_NAME",    /* Örn: "retell-media" */
-  uploadPreset: "BURAYA_UPLOAD_PRESET"  /* Unsigned preset adı */
+  cloudName:    "BURAYA_CLOUD_NAME",
+  uploadPreset: "BURAYA_UPLOAD_PRESET"
 };

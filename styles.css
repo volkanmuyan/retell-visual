@@ -145,16 +145,17 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 }
 
 /* Logo */
-.logo { display: flex; align-items: center; gap: 10px; }
-.logo-img { width: 36px; height: 36px; object-fit: contain; }
-.logo-wordmark {
-  font-family: 'Sora', sans-serif;
-  font-size: 1.65rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+.logo { display: flex; align-items: center; gap: 0; }
+.logo-img {
+  height: 30px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  /* Logo is black-on-white; invert on dark theme for white-on-dark */
+  filter: invert(1);
 }
-.logo-wordmark strong { font-weight: 800; letter-spacing: -0.01em; }
+[data-theme="light"] .logo-img { filter: none; }
+.logo-wordmark { display: none; }
 
 /* Nav */
 .main-nav { flex: 1; }

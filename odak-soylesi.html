@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>"Demokrasinin sınırları sağa doğru kayıyor" — Retell Media</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="article.css">
+</head>
+<body>
+
+  <div class="reading-progress" id="reading-progress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Okuma ilerlemesi"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Retell Media Ana Sayfa">
+        <img src="assets/logo-full.png" alt="Retell Media" class="logo-img">
+      </a>
+      <nav class="main-nav" id="main-nav" aria-label="Ana menü">
+        <ul class="nav-list">
+          <li><a href="index.html#saha"       class="nav-link">Saha</a></li>
+          <li><a href="index.html#cografya"   class="nav-link">Coğrafya</a></li>
+          <li><a href="index.html#kultur"     class="nav-link">Kültür</a></li>
+          <li><a href="index.html#multimedya" class="nav-link">Multimedya</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <button id="lang-toggle" class="icon-btn" aria-label="Dil değiştir"><span class="lang-label">TR</span></button>
+        <button id="theme-toggle" class="icon-btn" aria-label="Tema değiştir">
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button id="menu-toggle" class="icon-btn hamburger" aria-label="Mobil menü" aria-expanded="false"><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+      <ul>
+        <li><a href="index.html#saha"       class="mobile-link">Saha</a></li>
+        <li><a href="index.html#cografya"   class="mobile-link">Coğrafya</a></li>
+        <li><a href="index.html#kultur"     class="mobile-link">Kültür</a></li>
+        <li><a href="index.html#multimedya" class="mobile-link">Multimedya</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ARTICLE HERO -->
+    <section class="article-hero">
+      <div class="article-hero-img">
+        <img src="assets/haci-cevik-kapak.jpg" alt="Dr. Hacı Çevik söyleşisi" loading="eager">
+        <div class="article-hero-overlay"></div>
+      </div>
+      <div class="container article-hero-content">
+        <div class="article-breadcrumb">
+          <a href="index.html">Ana Sayfa</a>
+          <span>/</span>
+          <a href="index.html#saha">Saha</a>
+          <span>/</span>
+          <span>Odak</span>
+        </div>
+        <!-- Dinamik bant: article.css bu sayfada cat-main'i gizler, yalnızca "Odak" görünür -->
+        <div class="cat-band" style="margin-bottom:18px">
+          <span class="cat-main">Saha</span>
+          <span class="cat-sub">Odak</span>
+        </div>
+        <h1 class="article-title">"Demokrasinin sınırları sağa doğru kayıyor"</h1>
+        <p class="article-subtitle">Avrupa'da güç kazanan sağ popülist hareketler krizleri araçsallaştırıyor, göçmenleri hedef alıyor ve dijital algoritmalar aracılığıyla hegemonya inşa ediyor. Dr. Hacı Çevik ile bu dönüşümün anatomisi üzerine.</p>
+
+        <div class="article-meta-bar">
+          <div class="article-author-block">
+            <img src="assets/haci-cevik-1.jpg" alt="Adem Özgür" class="author-avatar">
+            <div>
+              <a href="#" class="author-name">Adem Özgür</a>
+              <span class="author-role">Söyleşi</span>
+            </div>
+          </div>
+          <div class="article-meta-right">
+            <span class="meta-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <time>1 Haziran 2026</time>
+            </span>
+            <span class="meta-item meta-reading">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>14 dk okuma</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARTICLE TOOLBAR -->
+    <div class="article-toolbar" id="article-toolbar">
+      <div class="container article-toolbar-inner">
+        <div class="toolbar-left">
+          <div class="a11y-group" role="group" aria-label="Yazı boyutu">
+            <button class="a11y-btn" id="font-decrease" aria-label="Yazıyı küçült">A−</button>
+            <button class="a11y-btn" id="font-reset"    aria-label="Yazı boyutunu sıfırla">A</button>
+            <button class="a11y-btn" id="font-increase" aria-label="Yazıyı büyüt">A+</button>
+          </div>
+          <button class="a11y-btn" id="focus-mode" aria-label="Odak modu">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          </button>
+        </div>
+        <div class="toolbar-center">
+          <span class="reading-status" id="reading-status">Okumaya başlayın</span>
+        </div>
+        <div class="toolbar-right">
+          <button class="share-btn" id="share-copy" aria-label="Bağlantıyı kopyala">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            <span>Kopyala</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTICLE BODY -->
+    <div class="article-layout" id="article-body">
+      <div class="container">
+        <div class="article-grid">
+
+          <!-- Sidebar TOC -->
+          <aside class="article-sidebar" id="article-sidebar" aria-label="İçindekiler">
+            <div class="toc-wrap">
+              <p class="toc-heading">İçindekiler</p>
+              <nav>
+                <ol class="toc-list" id="toc-list">
+                  <li><a href="#section-1" class="toc-link">Aşırı Sağın Yükselişi</a></li>
+                  <li><a href="#section-2" class="toc-link">Merkez Sağdan Merkez Aşırı Sağa</a></li>
+                  <li><a href="#section-3" class="toc-link">Kriz Zamanında Hedef Kim?</a></li>
+                  <li><a href="#section-4" class="toc-link">Algoritma, Yalan ve Influencer</a></li>
+                  <li><a href="#section-5" class="toc-link">Peki Ne Yapmalı?</a></li>
+                </ol>
+              </nav>
+              <div class="sidebar-author">
+                <img src="assets/haci-cevik-2.jpg" alt="Dr. Hacı Çevik" class="sidebar-author-img">
+                <div>
+                  <span class="sidebar-author-name">Dr. Hacı Çevik</span>
+                  <p class="sidebar-author-bio">Siyaset bilimci. Sağ popülizm, demokratik gerileme ve göç politikaları üzerine çalışıyor.</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Article Content -->
+          <article class="article-content" id="article-content" aria-label="Makale içeriği">
+
+            <p class="article-lead">Avrupa genelinde aşırı sağ partiler yalnızca seçimlerde daha fazla oy almakla kalmıyor; siyasi tartışmanın sınırlarını da yeniden çiziyor. Siyaset bilimci Dr. Hacı Çevik'e göre asıl değişim seçim sonuçlarından çok daha derinde yaşanıyor.</p>
+
+            <h2 id="section-1">Avrupa'nın Aşırı Sağı İktidarın Merkezine Taşındı</h2>
+
+            <p>Retell'e konuşan siyaset bilimci Dr. Hacı Çevik'e göre Avrupa'da yaşanan dönüşüm, yalnızca aşırı sağın yükselişiyle açıklanamaz. Asıl mesele, toplumların giderek daha dışlayıcı ve otoriter söylemlere açık hâle gelmesi.</p>
+
+            <div class="pull-quote">
+              <p>"Ekonomik krizler, göç dalgaları, güvenlik kaygıları ve bir türlü dinmeyen kolektif belirsizlik duygusu… Bunların birikimli etkisi, toplumsal tahayyülleri öyle bir noktaya taşıyor ki insanlar daha otoriter, dışlayıcı, homojenleştirici çözümlere kapı aralıyor."</p>
+              <footer><cite>Dr. Hacı Çevik</cite></footer>
+            </div>
+
+            <p>Ancak Çevik'e göre belirleyici olan yalnızca krizler değil:</p>
+
+            <p>"Asıl mesele, toplumun geniş kesimlerinin aşırı sağın ürettiği söyleme giderek daha açık hâle gelmesi, demokrasinin çoğulcu ilkelerinin kitleler nezdinde aşınmasıdır."</p>
+
+            <figure class="article-figure">
+              <img src="assets/haci-cevik-2.jpg" alt="Dr. Hacı Çevik">
+              <figcaption>Dr. Hacı Çevik, Retell Media söyleşisi için.</figcaption>
+            </figure>
+
+            <h2 id="section-2">Merkez Sağa Değil, Merkez Aşırı Sağa mı Yaklaşıyor?</h2>
+
+            <p>Bu dönüşümün nasıl işlediğini görmek için Almanya örneği dikkat çekici. CDU/CSU gibi köklü merkez sağ partilerin göç tartışmalarında AfD'nin diline yaklaşması, sosyal demokrat bir gelenekten gelen SPD'nin ise sertleştirilmiş sınır politikalarını desteklemesi, Avrupa siyasetinde yaşanan daha geniş bir değişimin işareti olarak görülüyor.</p>
+
+            <p>Dr. Çevik bunu, aşırı sağın oy oranlarından bağımsız bir başarı olarak değerlendiriyor:</p>
+
+            <div class="pull-quote pull-quote-accent">
+              <p>"Merkez partiler aşırı sağa göre pozisyon almaya başladığında, söylem zaten oraya taşınmış demektir. Mevcut krizler bu yolla daha da ağırlaşıyor."</p>
+              <footer><cite>Dr. Hacı Çevik</cite></footer>
+            </div>
+
+            <p>Aşırı sağın etkisini yalnızca seçim sonuçlarıyla ölçmenin yetersiz olduğunu savunuyor. Ona göre önemli olan, siyasi merkezin hangi yönde hareket ettiği.</p>
+
+            <h2 id="section-3">Kriz Zamanlarında Hedef Kim Oluyor?</h2>
+
+            <p>Toplumların ekonomik ya da siyasi sarsıntılar yaşadığı dönemlerde göçmenler ve mülteciler çoğu zaman tartışmaların merkezine yerleşiyor. Çevik, bunun tesadüfi bir durum olmadığını söylüyor:</p>
+
+            <div class="pull-quote">
+              <p>"Göçmenler toplumsal hiyerarşinin en kırılgan kesiminde yer alır. Kriz anında öfke ile korkunun güvenli bir hedefe ihtiyacı vardır. Göçmenler hem siyasi olarak savunmasızdır hem de 'dışarıdan gelen' imgesiyle kültürel tehdit anlatısına hazır birer kalıp sunar."</p>
+              <footer><cite>Dr. Hacı Çevik</cite></footer>
+            </div>
+
+            <p>2024 yılı sonunda Almanya'nın Magdeburg kentinde yaşanan Noel pazarı saldırısı Çevik'e göre bu dinamiğin çarpıcı örneklerinden biriydi. Olayın göçmenlerle bağlantılı olmadığı ortaya çıkmadan önce sosyal medya platformları göçmenleri suçlayan paylaşımlarla dolmuştu.</p>
+
+            <p>"Toplum bir kolektif sarsıntı yaşadığında, öfkesini ve korkusunu dökebileceği bir 'suçlu' arar. Göçmenler o aranan 'suçlu'dur, çünkü aynı zamanda sembolik yük taşıyıcısıdır. Kriz anında toplumun sınırları daraltılır ve göçmenler bu sınırların hep dışında konumlandırılır."</p>
+
+            <ul class="article-keypoints">
+              <li>
+                <div>
+                  <strong>Algoritmik Avantaj</strong>
+                  <p>Sosyal medya platformları etkileşimi artıran içerikleri öne çıkarır. Öfke, korku ve tehdit duygusu yaratan paylaşımlar daha fazla görünürlük elde eder.</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <strong>Dezenformasyon Ağları</strong>
+                  <p>Küçük ölçekli sahte haber siteleri ve Telegram kanalları, komplo teorilerini ve çoğu zaman yanlış olan göçmen karşıtı anlatıları sürekli yeniden üreterek dolaşıma sokuyor.</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <strong>Influencer Etkisi</strong>
+                  <p>YouTube ve TikTok'ta komik, hafif kılığına bürünmüş içeriklerle yayılan sağcı influencer etkisi; özellikle genç kuşakları farkında bile olmadan etkiliyor.</p>
+                </div>
+              </li>
+            </ul>
+
+            <h2 id="section-4">Algoritma, Yalan ve Influencer Üçgeni</h2>
+
+            <p>Çevik'e göre sağ popülizmin yükselişini anlamak için artık yalnızca seçim kampanyalarına, mitinglere veya parlamento tartışmalarına bakmak yeterli değil.</p>
+
+            <p>"Asıl savaş başka bir yerde, telefonlarımızın ekranlarında veriliyor."</p>
+
+            <p>Son on yılda dijital platformların siyasetteki rolünün belirgin biçimde arttığını söyleyen Çevik, bu dönüşümü üç temel unsur üzerinden açıklıyor: algoritmalar, dezenformasyon ağları ve sosyal medya influencer'ları.</p>
+
+            <p>Çevik, Elon Musk'ın Twitter'ı (X) satın almasının ardından bu tartışmaların daha da görünür hâle geldiğini düşünüyor: "Almanya'da AfD'nin sosyal medya hesaplarının görünürlüğü, merkez partilerin tüm kampanya biçimlerini gölgede bıraktı."</p>
+
+            <div class="pull-quote pull-quote-accent">
+              <p>"Dijital alan Habermas'ın idealindeki rasyonel tartışma ortamından uzak. Bugün orada hâkim olan kanıta dayalı bilgi değil, duygusal mobilizasyon."</p>
+              <footer><cite>Dr. Hacı Çevik</cite></footer>
+            </div>
+
+            <p>Özellikle genç kuşakları etkileyen influencer figürlerinin gücü, geleneksel siyasetçilerin çoğu zaman kullanamadığı araçlardan geliyor: mizah, ironi ve gündelik dil. "Alternatif hakikat popüler olanın içine yediriliyor. Özellikle genç kuşaklar bunun farkında bile olmadan etkileniyor."</p>
+
+            <h2 id="section-5">Peki Ne Yapmalı?</h2>
+
+            <p>Çevik, ortaya koyduğu tabloya rağmen iyimser olmak için nedenler bulunduğunu düşünüyor. Ancak bunun için iki yönlü bir mücadele gerektiğini vurguluyor.</p>
+
+            <p>İlk adım, sağ popülizmi besleyen yapısal koşulları ortadan kaldırmak: "İşsizliği, güvencesizliği, sosyal eşitsizliği azaltmak, sağ popülizme zemin hazırlayan kriz dinamiklerini ortadan kaldırmak."</p>
+
+            <p>İkinci adım ise çoğulculuğu savunan ve göçmenleri ya da azınlıkları günah keçisi hâline getiren söylemlere karşı alternatif anlatılar geliştirmek.</p>
+
+            <div class="pull-quote">
+              <p>"Bu ikisi birlikte yürümelidir. Biri olmadan diğeri yetmez."</p>
+              <footer><cite>Dr. Hacı Çevik</cite></footer>
+            </div>
+
+            <p>Avrupa'nın bugünkü siyasi tablosu ise her iki alanda da mücadelenin henüz yeterince güçlü bir karşılık bulamadığını gösteriyor. Tartışma artık yalnızca aşırı sağın yükselişiyle ilgili değil; demokratik siyasetin sınırlarının nerede başlayıp nerede bittiğiyle ilgili.</p>
+
+            <div class="pull-quote pull-quote-accent">
+              <p>"Karşımızda sağ popülizmin kurumsallaşmasından çok, demokrasinin normatif çerçevesinin daraldığı bir tablo var."</p>
+              <footer><cite>Dr. Hacı Çevik</cite></footer>
+            </div>
+
+            <!-- Article Footer -->
+            <footer class="article-footer">
+              <div class="article-tags-footer">
+                <span>Etiketler:</span>
+                <a href="#" class="tag">Aşırı Sağ</a>
+                <a href="#" class="tag">Avrupa Siyaseti</a>
+                <a href="#" class="tag">Göç</a>
+                <a href="#" class="tag">Algoritmalar</a>
+                <a href="#" class="tag">Demokrasi</a>
+                <a href="#" class="tag">Söyleşi</a>
+              </div>
+              <div class="author-bio-card">
+                <img src="assets/haci-cevik-1.jpg" alt="Adem Özgür" class="author-bio-img">
+                <div class="author-bio-text">
+                  <span class="author-bio-name">Adem Özgür</span>
+                  <p class="author-bio-role">Retell Media</p>
+                  <p>Avrupa siyaseti ve göç politikaları üzerine yazıyor.</p>
+                </div>
+              </div>
+            </footer>
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED -->
+    <section class="section-related" aria-label="İlgili yazılar">
+      <div class="container">
+        <div class="section-head" data-animate>
+          <div class="section-title-group">
+            <span class="section-eyebrow">İlgili</span>
+            <h2 class="section-heading">Saha'dan</h2>
+          </div>
+          <a href="index.html#saha" class="view-all">Tümünü Gör →</a>
+        </div>
+        <div class="featured-grid" data-animate>
+          <article class="card-sm">
+            <a href="dosya-soylesi.html" class="card-img-wrap">
+              <img src="assets/ezidi-kapak.jpg" alt="Êzidî Soykırımı" loading="lazy">
+              <span class="card-tag">Dosya</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title"><a href="dosya-soylesi.html">Êzidî Soykırımı: Adalet hâlâ gelmedi</a></h3>
+              <div class="card-footer">
+                <span class="card-author">Retell Media</span>
+                <time class="card-date">1 Haziran 2026</time>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo" style="margin-bottom:16px">
+            <img src="assets/logo-full.png" alt="Retell Media" class="logo-img">
+          </a>
+          <p class="footer-tagline">Toplumsal hikâyeler, araştırma ve yeni medya anlatıları — Türkçe ve İngilizce.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer menü">
+          <div class="footer-col">
+            <h4>Saha</h4>
+            <ul>
+              <li><a href="#">Araştırma</a></li>
+              <li><a href="#">Dosya</a></li>
+              <li><a href="#">Odak</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Coğrafya</h4>
+            <ul>
+              <li><a href="#">Hafıza</a></li>
+              <li><a href="#">Göç</a></li>
+              <li><a href="#">Portre</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Kültür</h4>
+            <ul>
+              <li><a href="#">Sinema</a></li>
+              <li><a href="#">Kitap</a></li>
+              <li><a href="#">Müzik</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Multimedya</h4>
+            <ul>
+              <li><a href="#">Video</a></li>
+              <li><a href="#">Podcast</a></li>
+              <li><a href="#">Fotoğraf</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <p class="copyright">© 2026 Retell Media. Tüm hakları saklıdır.</p>
+        <div class="footer-links">
+          <a href="#">Hakkımızda</a>
+          <a href="#">Çalışma Kuralları</a>
+          <a href="#">İletişim</a>
+          <a href="#">Gizlilik</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="article.js"></script>
+</body>
+</html>

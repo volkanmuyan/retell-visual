@@ -206,15 +206,13 @@
   try {
     db.collection('articles')
       .where('status', '==', 'published')
-      .orderBy('date', 'desc')
-      .limit(12)
       .get()
       .then(function(snapshot) {
         var arts = [];
         snapshot.forEach(function(doc) { arts.push(Object.assign({ id: doc.id }, doc.data())); });
         buildAndInject(arts);
       })
-      .catch(function() {});
+      .catch(function(err) { console.warn('Firestore okuma hatası:', err); });
   } catch(e) {}
 
   /* ── HERO SLIDER ────────────────────────────────────────── */

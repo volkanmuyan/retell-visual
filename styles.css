@@ -354,10 +354,10 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(to top,
-    #ffffff 28%,
-    rgba(255,255,255,0.92) 44%,
-    rgba(255,255,255,0.5) 60%,
-    rgba(255,255,255,0.0) 80%
+    #ffffff 18%,
+    rgba(255,255,255,0.88) 30%,
+    rgba(255,255,255,0.3) 44%,
+    rgba(255,255,255,0.0) 58%
   );
   z-index: 1;
 }
@@ -374,7 +374,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 /* Animated text — default hidden, shown when .active */
 .hero-title {
   font-family: 'Hando Trial', 'Alliance No.1', sans-serif;
-  font-size: clamp(2rem, 4.8vw, 4.4rem);
+  font-size: clamp(1.4rem, 3.3vw, 3rem);
   font-weight: 800; line-height: 1.06;
   color: #111; letter-spacing: -0.025em;
   opacity: 0; transform: translateY(24px);
@@ -382,8 +382,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 }
 .hero-sub {
   font-family: 'LTC Goudy Oldstyle Pro', 'Merel', Georgia, serif;
-  font-size: clamp(.9rem, 1.35vw, 1.05rem);
-  color: #444; max-width: 540px; line-height: 1.75;
+  font-size: clamp(.72rem, 1vw, .82rem);
+  color: #444; max-width: 520px; line-height: 1.7;
   opacity: 0; transform: translateY(18px);
   transition: opacity .7s var(--ease) .35s, transform .7s var(--ease) .35s;
 }
@@ -966,8 +966,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   .mm-card:last-child { grid-column: auto; }
   .footer-nav      { grid-template-columns: 1fr 1fr; }
   .footer-bottom   { flex-direction: column; align-items: flex-start; }
-  .hero-title      { font-size: clamp(1.7rem, 8.5vw, 2.8rem); }
-  .hero-content    { padding-bottom: 56px; }
+  .hero-title      { font-size: clamp(1.2rem, 6vw, 2rem); }
+  .hero-content    { padding-bottom: 52px; }
   .feed-bottom     { grid-template-columns: 1fr; }
   .feed-bottom .card-overlay:last-child { grid-column: auto; }
 }

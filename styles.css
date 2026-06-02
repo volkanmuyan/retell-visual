@@ -1,7 +1,95 @@
 /* ============================================================
-   RETELL VISUAL — styles.css
-   Dark editorial design · scroll animations · responsive
+   RETELL MEDIA — styles.css
    ============================================================ */
+
+/* ── PROJECT FONT FACES ─────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Hando Trial';
+  src: url('fonts/HandoTrial-Regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hando Trial';
+  src: url('fonts/HandoTrial-Medium.otf') format('opentype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hando Trial';
+  src: url('fonts/HandoTrial-SemiBold.otf') format('opentype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hando Trial';
+  src: url('fonts/HandoTrial-Bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Hando Trial';
+  src: url('fonts/HandoTrial-ExtraBold.otf') format('opentype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Merel';
+  src: url('fonts/Merel-Regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Merel';
+  src: url('fonts/Merel-Italic.otf') format('opentype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'LTC Goudy Oldstyle Pro';
+  src: url('fonts/LTCGoudyOldstylepro-Regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'LTC Goudy Oldstyle Pro';
+  src: url('fonts/LTCGoudyOldstylepro-Italic.otf') format('opentype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+
+/* ── ALLIANCE NO.1 FONT FACES ───────────────────────────────────────── */
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('fonts/alliance-light.otf') format('opentype');
+  font-weight: 300; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('fonts/alliance-regular.otf') format('opentype');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('fonts/alliance-regular-italic.otf') format('opentype');
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('fonts/alliance-medium.otf') format('opentype');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('fonts/alliance-semibold.otf') format('opentype');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('fonts/alliance-bold.otf') format('opentype');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('fonts/alliance-bold.otf') format('opentype');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Alliance No.1';
+  src: url('fonts/alliance-bold-italic.otf') format('opentype');
+  font-weight: 700; font-style: italic; font-display: swap;
+}
 
 /* ── VARIABLES ──────────────────────────────────────────────────────── */
 :root {
@@ -56,7 +144,7 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family: 'Hando Trial', 'Alliance No.1', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.65;
   min-height: 100vh;
@@ -80,7 +168,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   display: inline-block;
   padding: 4px 10px;
   border-radius: 4px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -99,7 +187,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   border-radius: 0;
   background: #fff;
   color: #000;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -227,7 +315,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .mobile-nav li + li { border-top: 1px solid var(--border); }
 .mobile-link {
   display: block; padding: 14px var(--px);
-  font-family: 'Sora', sans-serif; font-size: 1.1rem; font-weight: 600;
+  font-family: 'Alliance No.1', sans-serif; font-size: 1.1rem; font-weight: 600;
   transition: color .2s;
 }
 .mobile-link:hover { color: var(--text); }
@@ -237,7 +325,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   position: relative;
   height: 100svh; min-height: 580px;
   overflow: hidden;
-  background: var(--bg);
+  background: #f5f4f0;
 }
 
 .hero-track {
@@ -265,51 +353,66 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 
 .hero-overlay {
   position: absolute; inset: 0;
-  background: transparent;
+  background: linear-gradient(to top,
+    #ffffff 28%,
+    rgba(255,255,255,0.92) 44%,
+    rgba(255,255,255,0.5) 60%,
+    rgba(255,255,255,0.0) 80%
+  );
+  z-index: 1;
 }
 
 .hero-content {
   position: relative; z-index: 2;
-  display: flex; flex-direction: column; justify-content: center;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  align-items: flex-start;
   height: 100%;
-  padding-top: var(--header-h);
   padding-bottom: 80px;
-  max-width: 680px;
 }
-.hero-content > * + * { margin-top: 16px; }
+.hero-content > * + * { margin-top: 12px; }
 
 /* Animated text — default hidden, shown when .active */
 .hero-title {
-  font-family: 'Sora', sans-serif;
-  font-size: clamp(2.4rem, 5.5vw, 5rem);
-  font-weight: 800; line-height: 1.05;
-  color: #fff; letter-spacing: -0.02em;
+  font-family: 'Hando Trial', 'Alliance No.1', sans-serif;
+  font-size: clamp(2rem, 4.8vw, 4.4rem);
+  font-weight: 800; line-height: 1.06;
+  color: #111; letter-spacing: -0.025em;
   opacity: 0; transform: translateY(24px);
   transition: opacity .7s var(--ease) .2s, transform .7s var(--ease) .2s;
 }
 .hero-sub {
-  font-size: clamp(.95rem, 1.4vw, 1.1rem);
-  color: rgba(255,255,255,.75); max-width: 520px; line-height: 1.7;
+  font-family: 'LTC Goudy Oldstyle Pro', 'Merel', Georgia, serif;
+  font-size: clamp(.9rem, 1.35vw, 1.05rem);
+  color: #444; max-width: 540px; line-height: 1.75;
   opacity: 0; transform: translateY(18px);
   transition: opacity .7s var(--ease) .35s, transform .7s var(--ease) .35s;
 }
 .hero-meta {
   display: flex; gap: 16px;
-  font-size: .82rem; color: rgba(255,255,255,.5);
+  font-family: 'Hando Trial', 'Alliance No.1', sans-serif;
+  font-size: .82rem; color: #777;
   opacity: 0;
   transition: opacity .6s var(--ease) .5s;
 }
 .hero-meta .hero-date::before { content: '—'; margin-right: 6px; }
+.hero-meta .hero-author { font-weight: 500; color: #555; }
 .hero-slide.active .hero-title,
 .hero-slide.active .hero-sub,
 .hero-slide.active .hero-meta { opacity: 1; transform: translateY(0); }
+
+/* Hero cat-band override — light background */
+.hero .cat-sub {
+  color: #333;
+  border-color: rgba(0,0,0,.25);
+  background: transparent;
+}
 
 /* Primary button (also used outside hero) */
 .btn-primary {
   display: inline-flex; align-items: center;
   padding: 13px 26px; border-radius: 0;
   background: #fff; color: #000;
-  font-family: 'Sora', sans-serif; font-size: .88rem; font-weight: 700; letter-spacing: .02em;
+  font-family: 'Alliance No.1', sans-serif; font-size: .88rem; font-weight: 700; letter-spacing: .02em;
   width: fit-content;
   transition: background .2s, opacity .2s;
 }
@@ -317,11 +420,16 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 [data-theme="light"] .btn-primary { background: #000; color: #fff; }
 [data-theme="light"] .btn-primary:hover { background: #222; }
 
-/* Inside hero — start hidden */
+/* Inside hero — start hidden, always dark button */
 .hero-content .btn-primary {
+  background: #111; color: #fff;
+  font-family: 'Hando Trial', 'Alliance No.1', sans-serif;
+  font-size: .78rem; letter-spacing: .06em; text-transform: uppercase;
+  padding: 10px 22px;
   opacity: 0; transform: translateY(14px);
   transition: opacity .6s var(--ease) .55s, transform .6s var(--ease) .55s, background .2s;
 }
+.hero-content .btn-primary:hover { background: #333; }
 .hero-slide.active .hero-content .btn-primary { opacity: 1; transform: translateY(0); }
 
 /* Outline button */
@@ -329,25 +437,25 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   display: inline-flex; align-items: center;
   padding: 12px 24px; border-radius: 0;
   border: 1.5px solid var(--border-h); color: var(--text);
-  font-family: 'Sora', sans-serif; font-size: .88rem; font-weight: 600;
+  font-family: 'Alliance No.1', sans-serif; font-size: .88rem; font-weight: 600;
   transition: border-color .2s, background .2s;
 }
 .btn-outline:hover { border-color: var(--text); background: var(--border); }
 
 /* Arrows */
 .hero-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
+  position: absolute; top: 40%; transform: translateY(-50%);
   z-index: 10;
-  width: 48px; height: 48px;
+  width: 44px; height: 44px;
   display: flex; align-items: center; justify-content: center;
   border-radius: 50%;
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.2);
-  color: #fff;
+  background: rgba(255,255,255,.65);
+  border: 1px solid rgba(0,0,0,.1);
+  color: #222;
   backdrop-filter: blur(8px);
   transition: background .2s, transform .3s;
 }
-.hero-arrow:hover { background: rgba(255,255,255,.2); transform: translateY(-50%) scale(1.07); }
+.hero-arrow:hover { background: rgba(255,255,255,.9); transform: translateY(-50%) scale(1.07); }
 .hero-prev { left:  clamp(12px, 3vw, 40px); }
 .hero-next { right: clamp(12px, 3vw, 40px); }
 
@@ -360,23 +468,23 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 }
 .hero-dots { display: flex; gap: 10px; align-items: center; }
 .dot {
-  width: 8px; height: 8px; border-radius: 50%;
-  background: rgba(255,255,255,.30);
+  width: 7px; height: 7px; border-radius: 50%;
+  background: rgba(0,0,0,.18);
   transition: background .3s, transform .3s;
   border: none; padding: 0; flex-shrink: 0;
 }
-.dot.active { background: #fff; transform: scale(1.35); }
+.dot.active { background: #111; transform: scale(1.35); }
 
 .hero-progress-bar {
-  flex: 1; height: 2px; border-radius: 1px;
-  background: rgba(255,255,255,.12);
+  flex: 1; height: 1.5px; border-radius: 1px;
+  background: rgba(0,0,0,.1);
   overflow: hidden; position: relative;
 }
 .hero-progress-bar::after {
   content: '';
   position: absolute; left: 0; top: 0;
   width: 0%; height: 100%;
-  background: rgba(255,255,255,.55);
+  background: rgba(0,0,0,.45);
 }
 .hero-progress-bar.running::after {
   animation: prog 5s linear forwards;
@@ -413,7 +521,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .card-featured-main:hover .card-img-wrap img { transform: scale(1.04); }
 .card-featured-main .card-body { padding: 24px 28px 28px; }
 .card-featured-main .card-title {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: clamp(1.2rem, 2vw, 1.6rem);
   font-weight: 700; line-height: 1.25; margin-bottom: 12px;
 }
@@ -450,7 +558,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   display: flex; flex-direction: column; justify-content: space-between;
 }
 .card-sm .card-title {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: .9rem; font-weight: 600; line-height: 1.3;
 }
 .card-sm .card-title a { transition: color .2s; }
@@ -475,12 +583,12 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 }
 .section-title-group { display: flex; align-items: baseline; gap: 10px; }
 .section-eyebrow {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: .7rem; font-weight: 700;
   color: var(--text-3); letter-spacing: .1em;
 }
 .section-heading {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: clamp(1.6rem, 2.8vw, 2.4rem);
   font-weight: 800; letter-spacing: -.025em;
 }
@@ -534,7 +642,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   display: flex; flex-direction: column;
 }
 .card-article .card-title {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: .98rem; font-weight: 700; line-height: 1.3; margin-bottom: 8px;
 }
 .card-article .card-title a { transition: color .2s; }
@@ -553,7 +661,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .cat-main {
   background: #000;
   color: #fff;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: .62rem;
   font-weight: 700;
   letter-spacing: .12em;
@@ -570,7 +678,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   color: rgba(255,255,255,.9);
   border: 1px solid rgba(255,255,255,.35);
   border-left: none;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: .62rem;
   font-weight: 700;
   letter-spacing: .12em;
@@ -640,7 +748,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   padding: 52px 18px 18px;
 }
 .card-overlay .ov-title {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   color: #fff;
   font-weight: 700;
   line-height: 1.2;
@@ -665,7 +773,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 .spotlight-text { max-width: 520px; }
 .spotlight-text .label { margin-bottom: 20px; }
 .spotlight-text h2 {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 800; line-height: 1.1; letter-spacing: -.02em; margin-bottom: 20px;
 }
@@ -683,7 +791,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   border: 1px solid rgba(255,255,255,.08);
 }
 .spotlight-quote blockquote {
-  font-family: 'Sora', sans-serif; font-size: .88rem; font-weight: 600;
+  font-family: 'Alliance No.1', sans-serif; font-size: .88rem; font-weight: 600;
   line-height: 1.5; font-style: italic;
 }
 
@@ -732,7 +840,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 }
 .mm-card .card-body { padding: 16px 18px 20px; }
 .mm-card .card-title {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: .95rem; font-weight: 700; line-height: 1.3; margin-bottom: 6px;
 }
 .mm-card .card-title a:hover { color: var(--text-2); }
@@ -749,7 +857,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 }
 .newsletter-text .label { margin-bottom: 14px; }
 .newsletter-text h2 {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: clamp(1.4rem, 2.5vw, 2rem);
   font-weight: 800; line-height: 1.15; margin-bottom: 12px;
 }
@@ -791,7 +899,7 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
 
 .footer-nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
 .footer-col h4 {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Alliance No.1', sans-serif;
   font-size: .78rem; font-weight: 700;
   letter-spacing: .1em; text-transform: uppercase;
   color: var(--text-3); margin-bottom: 16px;
@@ -858,7 +966,8 @@ button { cursor: pointer; border: none; background: none; font: inherit; color: 
   .mm-card:last-child { grid-column: auto; }
   .footer-nav      { grid-template-columns: 1fr 1fr; }
   .footer-bottom   { flex-direction: column; align-items: flex-start; }
-  .hero-title      { font-size: clamp(2rem, 10vw, 3rem); }
+  .hero-title      { font-size: clamp(1.7rem, 8.5vw, 2.8rem); }
+  .hero-content    { padding-bottom: 56px; }
   .feed-bottom     { grid-template-columns: 1fr; }
   .feed-bottom .card-overlay:last-child { grid-column: auto; }
 }
